@@ -30,6 +30,7 @@ case "$(uname -s)" in
             eza
             btop
             oha
+            jq
             gnu-units
             shellcheck
             powerlevel10k
