@@ -4,6 +4,8 @@ export EDITOR="nvim"          # The one editor to rule them all
 export MANPAGER='nvim +Man!'  # is also my man pager
 export MANWIDTH=999           # and is fat.
 
+export LESSHISTFILE=-         # Disable storing history for the "less" util if it gets invoked.
+
 unsetopt BEEP                 # Disable audible beep on error
 
 setopt AUTO_CD                # Automatically `cd` by typing directory name
