@@ -19,6 +19,8 @@ case "$(uname -s)" in
             "$bp/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
             "$bp/share/zsh-autosuggestions/zsh-autosuggestions.zsh"
             "$bp/share/zsh-history-substring-search/zsh-history-substring-search.zsh"
+            "$bp/opt/fzf/shell/completion.zsh"
+            "$bp/opt/fzf/shell/key-bindings.zsh"
         )
         for file in "${brew_managed_shell_plugins[@]}"; do
             [[ -f $file ]] && source "$file"

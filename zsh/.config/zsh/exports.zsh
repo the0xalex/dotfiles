@@ -46,7 +46,6 @@ case "$(uname -s)" in
             "$RUSTUP_HOME/bin"
             $path
         )
-        export PATH
         ;;
 
     Linux)
@@ -59,3 +58,5 @@ case "$(uname -s)" in
         # Other OS
         ;;
 esac
+
+export PATH

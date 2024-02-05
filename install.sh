@@ -12,8 +12,6 @@ case "$(uname -s)" in
                 echo "Homebrew installation failed."
                 exit 1
             fi
-        else
-            echo "Homebrew is already installed."
         fi
 
         # Source Homebrew
@@ -55,7 +53,7 @@ case "$(uname -s)" in
         done
         # special case for this one:
         brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
-        
+
         # Install Rust 
         # https://www.rust-lang.org/tools/install
         if ! command -v "rustc --version" >/dev/null 2>&1; then
@@ -69,11 +67,14 @@ case "$(uname -s)" in
         fi
 	
         # Apply configuration files
-	stow git
+	    stow git
         stow nvim
         stow btop
         stow wezterm
         stow zsh
+        [ -d $HOME/Library/Developer/Xcode/UserData/FontAndColorThemes ] && \
+            [ -d $HOME/Library/Developer/Xcode/UserData/KeyBindings ] && \
+                stow xcode
     ;;
 
     Linux)
