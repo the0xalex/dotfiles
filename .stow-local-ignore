@@ -1,0 +1,24 @@
+# Version control stuff
+RCS
+.+,v
+CVS
+\.cvsignore
+\.svn
+_darcs
+\.hg
+\.git
+\.gitignore
+
+# Editor stuff
+.+~         # emacs backup files
+\#.*\#      # emacs autosave files
+.*.swp      # vim backup files
+.DS_Store   # MacOS crap
+
+# Common junk
+^/README.*
+^/LICENSE.*
+^/COPYING
+
+# Alex custom bootstrap script
+install.sh
