@@ -73,9 +73,11 @@ case "$(uname -s)" in
         stow btop
         stow wezterm
         stow zsh
-        [ -d $HOME/Library/Developer/Xcode/UserData/FontAndColorThemes ] && \
-            [ -d $HOME/Library/Developer/Xcode/UserData/KeyBindings ] && \
-                stow xcode
+        if [ -d $HOME/Library/Developer/Xcode/UserData/ ]; then
+           mkdir -p "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
+           mkdir -p "$HOME/Library/Developer/Xcode/UserData/KeyBindings"
+           stow xcode
+        fi
     ;;
 
     Linux)
