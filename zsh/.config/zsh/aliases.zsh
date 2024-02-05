@@ -12,6 +12,7 @@ Darwin)
     alias vim="nvim"
     alias units="gunits"
     if which eza > /dev/null 2>&1; then
+        alias ls="eza"
         alias l="eza -alo --git --smart-group -s type"
         alias tree="eza -T -L 3"
     fi
