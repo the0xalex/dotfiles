@@ -26,8 +26,8 @@ config.hide_tab_bar_if_only_one_tab = true
 -- config.color_scheme = "rose-pine"
 config.color_scheme = "Dark+"
 config.colors = {
-	selection_bg = '#292e42',
-	selection_fg = '#a9b1d6',
+	selection_bg = '#6BB2C1',
+	selection_fg = '#292C34',
 }
 
 return config
