@@ -57,18 +57,17 @@ case "$(uname -s)" in
 
         # Install Rust 
         # https://www.rust-lang.org/tools/install
-        if ! command -v "rustc --version" >/dev/null 2>&1; then
-            curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
-        fi
+        [ ! command -v "rustc --version" >/dev/null 2>&1 ] && \
+            curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
 
         # Install sdkman 
         # https://sdkman.io/install
         if ! command -v "sdk version" >/dev/null 2>&1; then
-            curl -s "https://get.sdkman.io?rcupdate=false" | bash
+            SDKMAN_DIR="${XDG_DATA_HOME:-HOME/.local/share}/sdkman" curl -s "https://get.sdkman.io?rcupdate=false" | bash
         fi
 	
         # Apply configuration files
-	    stow git
+        stow git
         stow nvim
         stow btop
         stow wezterm

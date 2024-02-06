@@ -10,7 +10,7 @@ Darwin)
     alias python="python3"
     alias pip="pip3"
     alias vim="nvim"
-    alias units="gunits"
+    alias units="gunits -H ''"
     if which eza > /dev/null 2>&1; then
         alias ls="eza"
         alias l="eza -alo --git --smart-group -s type"

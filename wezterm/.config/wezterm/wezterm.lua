@@ -12,7 +12,7 @@ config.font_size = 15
 config.harfbuzz_features = { "calt", "liga" }
 config.front_end = "WebGpu"
 config.enable_scroll_bar = false
-config.scrollback_lines = 10240
+config.scrollback_lines = 8192
 config.automatically_reload_config = true
 config.default_cursor_style = "BlinkingBar"
 config.initial_cols = 100
@@ -21,13 +21,13 @@ config.enable_tab_bar = true
 config.use_fancy_tab_bar = true
 config.tab_bar_at_bottom = false
 config.hide_tab_bar_if_only_one_tab = true
-config.window_padding = {
-    left = 8,
-    right = 8,
-    top = 8,
-    bottom = 8,
-}
+
 -- config.color_scheme = "Tokyo Night"
 -- config.color_scheme = "rose-pine"
 config.color_scheme = "Dark+"
+config.colors = {
+	selection_bg = '#292e42',
+	selection_fg = '#a9b1d6',
+}
+
 return config

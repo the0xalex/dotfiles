@@ -19,4 +19,5 @@ SHELL_SESSIONS_DISABLE=1    # Do not persist shell session information
 export ZDOTDIR="${XDG_CONFIG_HOME:-HOME/.config}/zsh"
 
 # Cargo says to put this in the env file.  Not sure why.
-source "${XDG_DATA_HOME:-$HOME/.local/share}/cargo/env"
+[ -f "${XDG_DATA_HOME:-$HOME}/.cargo/env" ] &&
+    source "${XDG_DATA_HOME:-$HOME}/.cargo/env"
