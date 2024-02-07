@@ -1,4 +1,5 @@
 -- https://wezfurlong.org/wezterm/config/files.html
+-- Don't know lua?  read this: https://learnxinyminutes.com/docs/lua/
 local wezterm = require("wezterm")
 
 local config = {}

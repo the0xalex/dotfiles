@@ -31,7 +31,6 @@ zle_highlight=('paste:none')  # Disable highlighting for pasted text in ZLE
 # Rust is good (https://doc.rust-lang.org/cargo/reference/environment-variables.html)
 export CARGO_HOME="$HOME/.cargo"
 export RUSTUP_HOME="$HOME/.rustup"
-export BROWSER="Safari"
 
 # Java is stupid
 export SDKMAN_DIR="${XDG_DATA_HOME:-HOME/.local/share}/sdkman"
