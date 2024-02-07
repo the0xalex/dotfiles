@@ -45,7 +45,6 @@ case "$(uname -s)" in
             "${XDG_DATA_HOME:-HOME/.local}/bin" 
             "$CARGO_HOME/bin"
             "$RUSTUP_HOME/bin"
-            "$SDKMAN_DIR/bin"
             $path
         )
         ;;

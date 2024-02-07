@@ -53,11 +53,11 @@ local config_files=(
   "$ZDOTDIR/prompt.zsh"         # Prompt Config
 )
 
-# Java was a horrible idea from the very beginning.
-# Should be after other config crap to work right.
-[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ] && \
-    config_files+=("$SDKMAN_DIR/bin/sdkman-init.sh")
-
 for file in "${config_files[@]}"; do
     [[ -f $file ]] && source "$file"
 done
+
+# Java was a horrible idea from the very beginning.
+# Should be after exports in order to work because 
+# otherwise expansion of $SDKMAN_DIR fails.
+[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
