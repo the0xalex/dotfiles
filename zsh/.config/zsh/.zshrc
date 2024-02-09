@@ -23,7 +23,7 @@ case "$(uname -s)" in
             "$bp/opt/fzf/shell/key-bindings.zsh"
         )
         for file in "${brew_managed_shell_plugins[@]}"; do
-            [[ -f $file ]] && source "$file"
+            [ -f "$file" ] && source "$file"
         done
         ;;
 
@@ -53,11 +53,16 @@ local config_files=(
   "$ZDOTDIR/prompt.zsh"         # Prompt Config
 )
 
-for file in "${config_files[@]}"; do
-    [[ -f $file ]] && source "$file"
-done
-
 # Java was a horrible idea from the very beginning.
-# Should be after exports in order to work because 
-# otherwise expansion of $SDKMAN_DIR fails.
-[ -s "$SDKMAN_DIR/bin/sdkman-init.sh" ] && source "$SDKMAN_DIR/bin/sdkman-init.sh"
+# This "maybe" sets up sdk man in the shell.
+#   1. Grab `SDKMAN_DIR` from exports file to avoid setting it in 
+#   multiple places
+#   2. Add sdkman setup script to `config_files` array.
+local sdkman_declaration=$(grep 'export SDKMAN_DIR=' "$ZDOTDIR/exports.zsh")
+eval "$sdkman_declaration"
+[ -s "${SDKMAN_DIR}/bin/sdkman-init.sh" ] && \
+    config_files+=("${SDKMAN_DIR}/bin/sdkman-init.sh")
+
+for file in "${config_files[@]}"; do
+    [ -f "$file" ] && source "$file"
+done

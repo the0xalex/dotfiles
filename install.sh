@@ -60,9 +60,18 @@ case "$(uname -s)" in
         [ ! command -v "rustc --version" >/dev/null 2>&1 ] && \
             curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
 
+        # Install Bun
+        # https://bun.sh/docs/installation#macos-and-linux
+        if ! command -v bun >/dev/null 2>&1; then
+            echo "Installing Bun"
+            brew tap oven-sh/bun
+            brew install bun
+        fi
+
         # Install sdkman 
         # https://sdkman.io/install
         if ! command -v "sdk version" >/dev/null 2>&1; then
+            echo "Installing sdkman..."
             SDKMAN_DIR="${XDG_DATA_HOME:-HOME/.local/share}/sdkman" curl -s "https://get.sdkman.io?rcupdate=false" | bash
         fi
 	
@@ -71,12 +80,16 @@ case "$(uname -s)" in
         stow nvim
         stow btop
         stow wezterm
+        stow pgadmin
         stow zsh
         if [ -d $HOME/Library/Developer/Xcode/UserData/ ]; then
            mkdir -p "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
            mkdir -p "$HOME/Library/Developer/Xcode/UserData/KeyBindings"
            stow xcode
         fi
+
+        [ -d "/Applications/pgAdmin 4.app/Contents/Resources/web" ] && \
+            ln -s "$HOME/.config/pgadmin/config_local.py" "/Applications/pgAdmin 4.app/Contents/Resources/web"
     ;;
 
     Linux)
