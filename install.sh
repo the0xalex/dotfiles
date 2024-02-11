@@ -72,7 +72,8 @@ case "$(uname -s)" in
         # https://sdkman.io/install
         if ! command -v "sdk version" >/dev/null 2>&1; then
             echo "Installing sdkman..."
-            SDKMAN_DIR="${XDG_DATA_HOME:-HOME/.local/share}/sdkman" curl -s "https://get.sdkman.io?rcupdate=false" | bash
+            SDKMAN_DIR="${XDG_DATA_HOME:-HOME/.local/share}/sdkman" \
+                curl -s "https://get.sdkman.io?rcupdate=false" | bash
         fi
 	
         # Apply configuration files
@@ -88,8 +89,9 @@ case "$(uname -s)" in
            stow xcode
         fi
 
-        [ -d "/Applications/pgAdmin 4.app/Contents/Resources/web" ] && \
-            ln -s "$HOME/.config/pgadmin/config_local.py" "/Applications/pgAdmin 4.app/Contents/Resources/web"
+        local pgadmin_config_dir="/Applications/pgAdmin 4.app/Contents/Resources/web" 
+        [ -d "$pgadmin_config_dir" ] && \
+            ln -s "$HOME/.config/pgadmin/config_local.py" "$pgadmin_config_dir"
     ;;
 
     Linux)

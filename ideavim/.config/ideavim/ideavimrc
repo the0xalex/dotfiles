@@ -1,0 +1,28 @@
+" ideavimrc is a configuration file for IdeaVim plugin.
+" list of commands: https://jb.gg/h38q75
+" examples: https://jb.gg/share-ideavimrc
+" search for actions: :actionlist <pattern>
+let mapleader = " "
+
+set scrolloff=5
+set incsearch
+set showmode
+set number relativenumber
+
+imap jk <esc>
+
+nmap L <Action>(NextTab)
+nmap <Leader>w <Action>(SaveAll)
+nmap H <Action>(PreviousTab)
+nmap <Leader>e <Action>(ActivateProjectToolWindow)
+nmap <Leader>c <Action>(CloseEditor)
+nmap gh <Action>(QuickJavaDoc)
+nmap <Leader>la <Action>(ShowErrorDescription)
+
+" --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
+nmap ∆ <Action>(MoveLineDown)
+vmap ∆ <Action>(MoveLineDown)
+xmap ∆ <Action>(MoveLineDown)
+nmap ˚ <Action>(MoveLineUp)
+vmap ˚ <Action>(MoveLineUp)
+xmap ˚ <Action>(MoveLineUp)
