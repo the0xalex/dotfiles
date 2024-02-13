@@ -45,6 +45,7 @@ case "$(uname -s)" in
             pgadmin4
             gitkraken
             intellij-idea
+            docker
         )
         for formula in "${formulae[@]}"; do
             brew install "$formula"

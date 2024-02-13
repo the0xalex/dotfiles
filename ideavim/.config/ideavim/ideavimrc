@@ -9,6 +9,9 @@ set incsearch
 set showmode
 set number relativenumber
 
+" --- Editor only actions
+set ideajoin
+
 imap jk <esc>
 
 nmap L <Action>(NextTab)
@@ -17,6 +20,7 @@ nmap H <Action>(PreviousTab)
 nmap <Leader>e <Action>(ActivateProjectToolWindow)
 nmap <Leader>c <Action>(CloseEditor)
 nmap gh <Action>(QuickJavaDoc)
+nmap gd <Action>(GoToDeclaration)
 nmap <Leader>la <Action>(ShowErrorDescription)
 
 " --- Enable IdeaVim plugins https://jb.gg/ideavim-plugins
