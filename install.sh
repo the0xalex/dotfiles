@@ -30,6 +30,7 @@ case "$(uname -s)" in
             eza
             btop
             oha
+            hyperfine
             jq
             gnu-units
             shellcheck
