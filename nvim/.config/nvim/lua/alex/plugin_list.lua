@@ -20,12 +20,13 @@ return {
             vim.cmd("colorscheme lunar")
         end,
     },
-    { "rose-pine/neovim", name = "rose-pine" },  -- I like this for some languages
-    { "catppuccin/nvim",  name = "catppuccin" }, -- other people like this.
-    "lunarvim/darkplus.nvim",                    -- for kids who recently evolved past vscode (honestly very complete)
-    -- other color stuff
+    { "rose-pine/neovim", name = "rose-pine", lazy = true }, -- I like this for some languages
+    { "catppuccin/nvim", name = "catppuccin", lazy = true }, -- other people like this.
+    { "lunarvim/darkplus.nvim", lazy = true }, -- for kids who recently evolved past vscode (honestly very complete)
+    -- other color related things
     {
-        "norcalli/nvim-colorizer.lua", -- Highlight inline color codes with the color.
+        -- Highlight inline color codes with the color.
+        "norcalli/nvim-colorizer.lua",
         config = function()
             require("colorizer").setup(
                 { "astro", "css", "scss", "html", "jsx", "tsx", "javascript", "typescriptreact" },
@@ -42,17 +43,17 @@ return {
         end,
     },
     {
-        "folke/todo-comments.nvim", -- Parses out labelled comments and colizes the block.
-        config = function()
-            require("todo-comments").setup({
-                keywords = {
-                    MARK = { icon = " ", color = "warning" },
-                },
-            })
-        end,
+        -- Parses out labelled comments and colizes the block.
+        "folke/todo-comments.nvim",
+        opts = {
+            keywords = {
+                MARK = { icon = " ", color = "warning" },
+            },
+        },
     },
     {
-        "roobert/tailwindcss-colorizer-cmp.nvim", -- Colorizes tailwindcss classes for colors.
+        -- Colorizes tailwindcss classes for colors.
+        "roobert/tailwindcss-colorizer-cmp.nvim",
         config = function()
             require("tailwindcss-colorizer-cmp").setup({
                 color_square_width = 2,
@@ -76,7 +77,7 @@ return {
     },
 
     -- Comment
-    { "numToStr/Comment.nvim",           opts = {} }, -- "gc" to comment visual regions/lines
+    { "numToStr/Comment.nvim", opts = {} }, -- "gc" to comment visual regions/lines
 
     -- Autocompletion
     {
@@ -195,18 +196,31 @@ return {
         },
     },
 
+    -- Split (and join, though default join is all I use)
+    -- `:h MiniSplitjoin`
+    {
+        "echasnovski/mini.splitjoin",
+        version = false,
+        opts = { mappings = { toggle = "S", split = "", join = "" } },
+    },
+
+    -- Align text in blocks
+    {
+        "echasnovski/mini.align",
+        version = false,
+        opts = {},
+    },
+
     -- Indent scope
     {
         "echasnovski/mini.indentscope",
         version = false,
         event = { "BufReadPre", "BufNewFile" },
-        config = function()
-            require("mini.indentscope").setup({
-                symbol = "▏",
-                --symbol = "│",
-                options = { try_as_border = true },
-            })
-        end,
+        opts = {
+            symbol = "▏",
+            --symbol = "│",
+            options = { try_as_border = true },
+        },
         init = function()
             vim.api.nvim_create_autocmd("FileType", {
                 pattern = {
@@ -228,7 +242,7 @@ return {
         end,
     },
 
-    -- Fuzzy Finder (files, lsp, help-tags, keymaps, etc)
+    -- Telescope
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
@@ -254,6 +268,32 @@ return {
             "nvim-treesitter/nvim-treesitter-textobjects",
         },
         build = ":TSUpdate",
+    },
+
+    -- Dashboard
+    require("alex.plugins.dashboard"),
+
+    -- Terminal
+    {
+        "akinsho/toggleterm.nvim",
+        branch = "main",
+        init = function()
+            local term = require("alex.plugins.toggleterm")
+            term:init()
+        end,
+        config = function()
+            local term = require("alex.plugins.toggleterm")
+            term:setup()
+        end,
+        cmd = {
+            "ToggleTerm",
+            "TermExec",
+            "ToggleTermToggleAll",
+            "ToggleTermSendCurrentLine",
+            "ToggleTermSendVisualLines",
+            "ToggleTermSendVisualSelection",
+        },
+        keys = require("alex.plugins.toggleterm").config.open_mapping,
     },
 
     require("alex.plugins.autoformat"),

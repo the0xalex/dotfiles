@@ -9,6 +9,8 @@ _G.require_clean = require("alex.helpers").require_clean
 _G.require_safe = require("alex.helpers").require_safe
 _G.reload = require("alex.helpers").reload
 _G.join_paths = require("alex.helpers").join_paths
+_G.alex_config_root = vim.fn.expand("%:p:h")
+_G.user_name = "The-0xAlex"
 
 --- Settings to load
 --- NOTE: These lua modules have an `:init` function by convention.
@@ -29,11 +31,11 @@ end
 --- Plugins to load
 local plugins = require("alex.plugin_list")
 
---- Handles packages.
+--- Handles packages
 --- 1. Clones the package manager if necessary.
 --- 2. Loads the package manager
 --- 3. Passes in the plugin table defined above for configuration.
---- NOTE: https://github.com/folke/lazy.nvim
+--- https://github.com/folke/lazy.nvim
 ---@see Lazy or `h: lazy.nvim.txt` after install
 M.load_plugins = function()
     local lazypath = join_paths(vim.fn.stdpath("data"), "lazy", "lazy.nvim")
