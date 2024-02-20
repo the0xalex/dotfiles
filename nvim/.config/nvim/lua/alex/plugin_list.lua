@@ -1,12 +1,19 @@
 return {
-    -- LSP
+    "nvim-lua/plenary.nvim", -- The best lua helper library
+    "folke/zen-mode.nvim",   -- Mostly for screen sharing
+
+    -- NOTE: LSP
+
     "williamboman/mason.nvim",           -- lsp manager
     "williamboman/mason-lspconfig.nvim", -- bridge from mason to nvim-lspconfig
     "neovim/nvim-lspconfig",             -- collection of default lsp configs
     "j-hui/fidget.nvim",                 -- display for lsp events
     "folke/neodev.nvim",                 -- lua lsp extras for neovim dev
+    "folke/which-key.nvim",              -- show pending keybinds
 
-    -- Colors
+    -- NOTE: Colors
+    --
+    -- schemes
     {
         "lunarvim/lunar.nvim", -- GOAT, my default
         config = function()
@@ -15,10 +22,64 @@ return {
     },
     { "rose-pine/neovim", name = "rose-pine" },  -- I like this for some languages
     { "catppuccin/nvim",  name = "catppuccin" }, -- other people like this.
-    "lunarvim/darkplus.nvim",                    -- for kids who recently evolved past vscode
-
+    "lunarvim/darkplus.nvim",                    -- for kids who recently evolved past vscode (honestly very complete)
+    -- other color stuff
     {
-        -- Autocompletion
+        "norcalli/nvim-colorizer.lua", -- Highlight inline color codes with the color.
+        config = function()
+            require("colorizer").setup(
+                { "astro", "css", "scss", "html", "jsx", "tsx", "javascript", "typescriptreact" },
+                {
+                    RGB = true,      -- #RGB hex codes
+                    RRGGBB = true,   -- #RRGGBB hex codes
+                    RRGGBBAA = true, -- #RRGGBBAA hex codes
+                    rgb_fn = true,   -- CSS rgb() and rgba() functions
+                    hsl_fn = true,   -- CSS hsl() and hsla() functions
+                    css = true,      -- Enable all CSS features: rgb_fn, hsl_fn, names, RGB, RRGGBB
+                    css_fn = true,   -- Enable all CSS *functions*: rgb_fn, hsl_fn
+                }
+            )
+        end,
+    },
+    {
+        "folke/todo-comments.nvim", -- Parses out labelled comments and colizes the block.
+        config = function()
+            require("todo-comments").setup({
+                keywords = {
+                    MARK = { icon = " ", color = "warning" },
+                },
+            })
+        end,
+    },
+    {
+        "roobert/tailwindcss-colorizer-cmp.nvim", -- Colorizes tailwindcss classes for colors.
+        config = function()
+            require("tailwindcss-colorizer-cmp").setup({
+                color_square_width = 2,
+            })
+        end,
+    },
+
+    -- Useless fun
+    { "eandrju/cellular-automaton.nvim", lazy = true },
+
+    -- Spectre
+    -- Find / Replace
+    {
+        "windwp/nvim-spectre",
+        event = "BufRead",
+        config = function()
+            require("spectre").setup({
+                open_cmd = "noswapfile vnew",
+            })
+        end,
+    },
+
+    -- Comment
+    { "numToStr/Comment.nvim",           opts = {} }, -- "gc" to comment visual regions/lines
+
+    -- Autocompletion
+    {
         "hrsh7th/nvim-cmp",
         dependencies = {
             -- Snippet Engine & its associated nvim-cmp source
@@ -45,13 +106,11 @@ return {
         },
     },
 
-    -- Useful plugin to show you pending keybinds.
-    { "folke/which-key.nvim",  opts = {} },
+    -- Git signs
+    -- `:h gitsigns.txt`
     {
-        -- Adds git related signs to the gutter, as well as utilities for managing changes
         "lewis6991/gitsigns.nvim",
         opts = {
-            -- See `:help gitsigns.txt`
             signs = {
                 add = { text = "+" },
                 change = { text = "~" },
@@ -122,10 +181,10 @@ return {
         },
     },
 
+    -- Set lualine as statusline
+    -- `:h lualine.txt`
     {
-        -- Set lualine as statusline
         "nvim-lualine/lualine.nvim",
-        -- See `:help lualine.txt`
         opts = {
             options = {
                 icons_enabled = false,
@@ -136,31 +195,51 @@ return {
         },
     },
 
+    -- Indent scope
     {
-        -- Add indentation guides even on blank lines
-        "lukas-reineke/indent-blankline.nvim",
-        -- Enable `lukas-reineke/indent-blankline.nvim`
-        -- See `:help ibl`
-        main = "ibl",
-        opts = {},
+        "echasnovski/mini.indentscope",
+        version = false,
+        event = { "BufReadPre", "BufNewFile" },
+        config = function()
+            require("mini.indentscope").setup({
+                symbol = "▏",
+                --symbol = "│",
+                options = { try_as_border = true },
+            })
+        end,
+        init = function()
+            vim.api.nvim_create_autocmd("FileType", {
+                pattern = {
+                    "help",
+                    "alpha",
+                    "dashboard",
+                    "nvimtree",
+                    "Trouble",
+                    "lazy",
+                    "mason",
+                    "notify",
+                    "toggleterm",
+                    "lazyterm",
+                },
+                callback = function()
+                    vim.b.miniindentscope_disable = true
+                end,
+            })
+        end,
     },
 
-    -- "gc" to comment visual regions/lines
-    { "numToStr/Comment.nvim", opts = {} },
-
-    -- Fuzzy Finder (files, lsp, etc)
+    -- Fuzzy Finder (files, lsp, help-tags, keymaps, etc)
     {
         "nvim-telescope/telescope.nvim",
         branch = "0.1.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
             -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-            -- Only load if `make` is available. Make sure you have the system
-            -- requirements installed.
+            -- only loads if `make` is available.
             {
                 "nvim-telescope/telescope-fzf-native.nvim",
                 -- NOTE: If you are having trouble with this installation,
-                --       refer to the README for telescope-fzf-native for more instructions.
+                --       see the README for telescope-fzf-native
                 build = "make",
                 cond = function()
                     return vim.fn.executable("make") == 1
@@ -170,7 +249,6 @@ return {
     },
 
     {
-        -- Highlight, edit, and navigate code
         "nvim-treesitter/nvim-treesitter",
         dependencies = {
             "nvim-treesitter/nvim-treesitter-textobjects",

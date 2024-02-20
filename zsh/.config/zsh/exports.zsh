@@ -32,6 +32,10 @@ zle_highlight=('paste:none')  # Disable highlighting for pasted text in ZLE
 export CARGO_HOME="$HOME/.cargo"
 export RUSTUP_HOME="$HOME/.rustup"
 
+# Jury is still out on Go.
+mkdir -p $HOME/Developer
+export GOPATH="$HOME/Developer/go"
+
 # Java is stupid
 export SDKMAN_DIR="${XDG_DATA_HOME:-HOME/.local/share}/sdkman"
 
