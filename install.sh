@@ -36,6 +36,7 @@ case "$(uname -s)" in
             shellcheck
             stylua
             lazygit
+            gnu-sed
             powerlevel10k
             'postgresql@16'
             zsh-autosuggestions
