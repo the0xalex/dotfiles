@@ -49,11 +49,6 @@ return {
                     return
                 end
 
-                -- Use stylua for lua, not the lsp
-                if client ~= nil and client.name == "lua_ls" then
-                    return
-                end
-
                 -- Create an autocmd that will run *before* we save the buffer.
                 -- Run the formatting command for the LSP that has just attached.
                 vim.api.nvim_create_autocmd("BufWritePre", {
@@ -64,14 +59,14 @@ return {
                             return
                         end
 
-                        vim.lsp.buf.format {
+                        vim.lsp.buf.format({
                             async = false,
                             filter = function(c)
                                 if c ~= nil and client ~= nil then
                                     return c.id == client.id
                                 end
                             end,
-                        }
+                        })
                     end,
                 })
             end,

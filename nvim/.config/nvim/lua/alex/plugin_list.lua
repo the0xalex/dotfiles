@@ -20,9 +20,9 @@ return {
             vim.cmd("colorscheme lunar")
         end,
     },
-    { "rose-pine/neovim", name = "rose-pine", lazy = true }, -- I like this for some languages
-    { "catppuccin/nvim", name = "catppuccin", lazy = true }, -- other people like this.
-    { "lunarvim/darkplus.nvim", lazy = true }, -- for kids who recently evolved past vscode (honestly very complete)
+    { "rose-pine/neovim",       name = "rose-pine",  lazy = true }, -- I like this for some languages
+    { "catppuccin/nvim",        name = "catppuccin", lazy = true }, -- other people like this.
+    { "lunarvim/darkplus.nvim", lazy = true },                      -- for kids who recently evolved past vscode (honestly very complete)
     -- other color related things
     {
         -- Highlight inline color codes with the color.
@@ -77,7 +77,7 @@ return {
     },
 
     -- Comment
-    { "numToStr/Comment.nvim", opts = {} }, -- "gc" to comment visual regions/lines
+    { "numToStr/Comment.nvim",           opts = {} }, -- "gc" to comment visual regions/lines
 
     -- Autocompletion
     {
