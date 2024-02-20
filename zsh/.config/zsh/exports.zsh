@@ -45,6 +45,7 @@ case "$(uname -s)" in
             "${XDG_DATA_HOME:-HOME/.local}/bin" 
             "$CARGO_HOME/bin"
             "$RUSTUP_HOME/bin"
+            "/usr/local/go/bin"
             "/opt/homebrew/opt/postgresql@16/bin"
             $path
         )

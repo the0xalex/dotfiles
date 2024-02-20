@@ -34,6 +34,7 @@ case "$(uname -s)" in
             jq
             gnu-units
             shellcheck
+            stylua
             powerlevel10k
             'postgresql@16'
             zsh-autosuggestions
