@@ -9,6 +9,7 @@ export LESSHISTFILE=-         # Disable storing history for the "less" util if i
 unsetopt BEEP                 # Disable audible beep on error
 
 setopt AUTO_CD                # Automatically `cd` by typing directory name
+setopt CHASE_LINKS            # Resolve symbolic links to their true values when changing directory
 setopt GLOB_DOTS              # Include hidden files in glob patterns
 setopt NOMATCH                # Error if no files match a glob pattern
 setopt MENU_COMPLETE          # Enable menu selection for completions
