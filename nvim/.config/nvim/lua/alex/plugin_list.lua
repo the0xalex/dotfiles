@@ -11,9 +11,8 @@ return {
     "folke/neodev.nvim",                 -- lua lsp extras for neovim dev
     "folke/which-key.nvim",              -- show pending keybinds
 
-    -- NOTE: Colors
-    --
-    -- schemes
+    -- Colors
+    -- First, the schemes
     {
         "lunarvim/lunar.nvim", -- GOAT, my default
         config = function ()
@@ -23,9 +22,10 @@ return {
     { "rose-pine/neovim",       name = "rose-pine",  lazy = true }, -- I like this for some languages
     { "catppuccin/nvim",        name = "catppuccin", lazy = true }, -- other people like this.
     { "lunarvim/darkplus.nvim", lazy = true },                      -- for kids who recently evolved past vscode (honestly very complete)
+
     -- other color related things
+    -- Colorizer for inline color definition highlighting
     {
-        -- Highlight inline color codes with the color.
         "norcalli/nvim-colorizer.lua",
         config = function ()
             require("colorizer").setup(
@@ -42,8 +42,9 @@ return {
             )
         end,
     },
+    -- todo-comments
+    -- Parses out labelled comments and colizes the block.
     {
-        -- Parses out labelled comments and colizes the block.
         "folke/todo-comments.nvim",
         opts = {
             keywords = {
@@ -51,8 +52,8 @@ return {
             },
         },
     },
+    -- Colorizes tailwindcss classes for colors.
     {
-        -- Colorizes tailwindcss classes for colors.
         "roobert/tailwindcss-colorizer-cmp.nvim",
         config = function ()
             require("tailwindcss-colorizer-cmp").setup({
@@ -77,7 +78,12 @@ return {
     },
 
     -- Comment
-    { "numToStr/Comment.nvim",           opts = {} }, -- "gc" to comment visual regions/lines
+    -- "gc" to comment visual lines or blocks
+    -- "gb" to block comment where supported
+    {
+        "numToStr/Comment.nvim",
+        opts = {},
+    },
 
     -- Autocompletion
     {
@@ -111,23 +117,36 @@ return {
     -- `:h gitsigns.txt`
     {
         "lewis6991/gitsigns.nvim",
-        opts = { require("alex.plugins.gitsigns") },
-        event = "User FileOpened",
-        cmd = "Gitsigns",
+        config = function ()
+            local gitsigns = require("alex.plugins.gitsigns")
+            gitsigns:init()
+        end,
     },
 
     -- Set lualine as statusline
     -- `:h lualine.txt`
     {
         "nvim-lualine/lualine.nvim",
-        opts = {
-            options = {
-                icons_enabled = false,
-                theme = "auto",
-                component_separators = "|",
-                section_separators = "",
-            },
-        },
+        config = function ()
+            require("alex.plugins.lualine"):init()
+        end,
+    },
+
+    -- breadcrumbs
+    {
+        "SmiteshP/nvim-navic",
+        config = function ()
+            require("alex.plugins.breadcrumbs").setup()
+        end,
+    },
+
+    -- Buffers in a "tab line" on the top.  (kinda, anyway)
+    {
+        "akinsho/bufferline.nvim",
+        config = function ()
+            require("alex.plugins.bufferline").setup()
+        end,
+        branch = "main",
     },
 
     -- Split (and join, though default join is all I use)
@@ -212,12 +231,10 @@ return {
         "akinsho/toggleterm.nvim",
         branch = "main",
         init = function ()
-            local term = require("alex.plugins.toggleterm")
-            term:init()
+            require("alex.plugins.toggleterm").init()
         end,
         config = function ()
-            local term = require("alex.plugins.toggleterm")
-            term:setup()
+            require("alex.plugins.toggleterm").setup()
         end,
         cmd = {
             "ToggleTerm",
@@ -227,7 +244,7 @@ return {
             "ToggleTermSendVisualLines",
             "ToggleTermSendVisualSelection",
         },
-        keys = require("alex.plugins.toggleterm").config.open_mapping,
+        keys = require("alex.plugins.toggleterm").terminal.open_mapping,
     },
 
     require("alex.plugins.autoformat"),

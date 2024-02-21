@@ -68,6 +68,7 @@ local maps = {
         -- TODO: move to whichkey
         ["<leader>e"] = { ":lua vim.diagnostic.open_float()<cr>", { desc = "Open floating diagnostics" } },
         ["<leader>q"] = { ":lua vim.diagnostic.setloclist()<cr>", { desc = "Diagnostics in quickfix list" } },
+        ["<leader>gg"] = { "<cmd>lua require 'alex.plugins.toggleterm'.lazygit_toggle()<cr>", { desc = "Lazygit" } },
     },
 
     visual_mode = {

@@ -66,4 +66,9 @@ M.config = {
     },
 }
 
+function M:init()
+    local plugin = require("gitsigns")
+    plugin.setup(self.config)
+end
+
 return M

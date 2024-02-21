@@ -43,8 +43,8 @@ local function find_git_root()
     -- Find the Git root directory from the current file's path
     local git_root = vim.fn.systemlist(
         "git -C "
-            .. vim.fn.escape(current_dir, " ") ---@diagnostic disable-line
-            .. " rev-parse --show-toplevel"
+        .. vim.fn.escape(current_dir, " ") ---@diagnostic disable-line
+        .. " rev-parse --show-toplevel"
     )[1]
     if vim.v.shell_error ~= 0 then
         print("Not a git repository. Searching on current working directory")
@@ -68,7 +68,7 @@ vim.api.nvim_create_user_command("LiveGrepGitRoot", live_grep_git_root, {})
 -- See `:h telescope.builtin`
 vim.keymap.set("n", "<leader>?", require("telescope.builtin").oldfiles, { desc = "[?] Find recently opened files" })
 vim.keymap.set("n", "<leader><space>", require("telescope.builtin").buffers, { desc = "[ ] Find existing buffers" })
-vim.keymap.set("n", "<leader>/", function()
+vim.keymap.set("n", "<leader>/", function ()
     -- You can pass additional configuration to telescope to change theme, layout, etc.
     require("telescope.builtin").current_buffer_fuzzy_find(require("telescope.themes").get_dropdown({
         winblend = 10,
@@ -96,7 +96,7 @@ vim.keymap.set("n", "<leader>sr", require("telescope.builtin").resume, { desc = 
 -- [[ Configure Treesitter ]]
 -- See `:help nvim-treesitter`
 -- Defer Treesitter setup after first render to improve startup time of 'nvim {filename}'
-vim.defer_fn(function()
+vim.defer_fn(function ()
     require("nvim-treesitter.configs").setup({
         -- Add languages to be installed here that you want installed for treesitter
         ensure_installed = {
@@ -112,6 +112,8 @@ vim.defer_fn(function()
             "vimdoc",
             "vim",
             "bash",
+            "markdown",
+            "markdown_inline",
         },
 
         -- Autoinstall languages that are not installed. Defaults to false (but you can change for yourself!)
@@ -182,14 +184,14 @@ end, 0)
 
 -- [[ Configure LSP ]]
 --  This function gets run when an LSP connects to a particular buffer.
-local on_attach = function(_, bufnr)
+local on_attach = function (_, bufnr)
     -- NOTE: Remember that lua is a real programming language, and as such it is possible
     -- to define small helper and utility functions so you don't have to repeat yourself
     -- many times.
     --
     -- In this case, we create a function that lets us more easily define mappings specific
     -- for LSP related items. It sets the mode, buffer and description for us each time.
-    local nmap = function(keys, func, desc)
+    local nmap = function (keys, func, desc)
         if desc then
             desc = "LSP: " .. desc
         end
@@ -198,7 +200,7 @@ local on_attach = function(_, bufnr)
     end
 
     nmap("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
-    nmap("<leader>ca", function()
+    nmap("<leader>ca", function ()
         vim.lsp.buf.code_action({ context = { only = { "quickfix", "refactor", "source" } } })
     end, "[C]ode [A]ction")
 
@@ -217,12 +219,12 @@ local on_attach = function(_, bufnr)
     nmap("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
     nmap("<leader>wa", vim.lsp.buf.add_workspace_folder, "[W]orkspace [A]dd Folder")
     nmap("<leader>wr", vim.lsp.buf.remove_workspace_folder, "[W]orkspace [R]emove Folder")
-    nmap("<leader>wl", function()
+    nmap("<leader>wl", function ()
         print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
     end, "[W]orkspace [L]ist Folders")
 
     -- Create a command `:Format` local to the LSP buffer
-    vim.api.nvim_buf_create_user_command(bufnr, "Format", function(_)
+    vim.api.nvim_buf_create_user_command(bufnr, "Format", function (_)
         vim.lsp.buf.format()
     end, { desc = "Format current buffer with LSP" })
 end
@@ -291,7 +293,7 @@ mason_lspconfig.setup({
 })
 
 mason_lspconfig.setup_handlers({
-    function(server_name)
+    function (server_name)
         require("lspconfig")[server_name].setup({
             capabilities = capabilities,
             on_attach = on_attach,
@@ -310,7 +312,7 @@ luasnip.config.setup({})
 
 cmp.setup({
     snippet = {
-        expand = function(args)
+        expand = function (args)
             luasnip.lsp_expand(args.body)
         end,
     },
@@ -327,7 +329,7 @@ cmp.setup({
             behavior = cmp.ConfirmBehavior.Replace,
             select = true,
         }),
-        ["<Tab>"] = cmp.mapping(function(fallback)
+        ["<Tab>"] = cmp.mapping(function (fallback)
             if cmp.visible() then
                 cmp.select_next_item()
             elseif luasnip.expand_or_locally_jumpable() then
@@ -336,7 +338,7 @@ cmp.setup({
                 fallback()
             end
         end, { "i", "s" }),
-        ["<S-Tab>"] = cmp.mapping(function(fallback)
+        ["<S-Tab>"] = cmp.mapping(function (fallback)
             if cmp.visible() then
                 cmp.select_prev_item()
             elseif luasnip.locally_jumpable(-1) then
