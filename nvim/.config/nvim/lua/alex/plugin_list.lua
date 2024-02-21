@@ -16,7 +16,7 @@ return {
     -- schemes
     {
         "lunarvim/lunar.nvim", -- GOAT, my default
-        config = function()
+        config = function ()
             vim.cmd("colorscheme lunar")
         end,
     },
@@ -27,7 +27,7 @@ return {
     {
         -- Highlight inline color codes with the color.
         "norcalli/nvim-colorizer.lua",
-        config = function()
+        config = function ()
             require("colorizer").setup(
                 { "astro", "css", "scss", "html", "jsx", "tsx", "javascript", "typescriptreact" },
                 {
@@ -54,7 +54,7 @@ return {
     {
         -- Colorizes tailwindcss classes for colors.
         "roobert/tailwindcss-colorizer-cmp.nvim",
-        config = function()
+        config = function ()
             require("tailwindcss-colorizer-cmp").setup({
                 color_square_width = 2,
             })
@@ -69,7 +69,7 @@ return {
     {
         "windwp/nvim-spectre",
         event = "BufRead",
-        config = function()
+        config = function ()
             require("spectre").setup({
                 open_cmd = "noswapfile vnew",
             })
@@ -86,7 +86,7 @@ return {
             -- Snippet Engine & its associated nvim-cmp source
             {
                 "L3MON4D3/LuaSnip",
-                build = (function()
+                build = (function ()
                     -- Build Step is needed for regex support in snippets
                     -- This step is not supported in many windows environments
                     -- Remove the below condition to re-enable on windows
@@ -111,75 +111,9 @@ return {
     -- `:h gitsigns.txt`
     {
         "lewis6991/gitsigns.nvim",
-        opts = {
-            signs = {
-                add = { text = "+" },
-                change = { text = "~" },
-                delete = { text = "_" },
-                topdelete = { text = "‾" },
-                changedelete = { text = "~" },
-            },
-            on_attach = function(bufnr)
-                local gs = package.loaded.gitsigns
-
-                local function map(mode, l, r, opts)
-                    opts = opts or {}
-                    opts.buffer = bufnr
-                    vim.keymap.set(mode, l, r, opts)
-                end
-
-                -- Navigation
-                map({ "n", "v" }, "]c", function()
-                    if vim.wo.diff then
-                        return "]c"
-                    end
-                    vim.schedule(function()
-                        gs.next_hunk()
-                    end)
-                    return "<Ignore>"
-                end, { expr = true, desc = "Jump to next hunk" })
-
-                map({ "n", "v" }, "[c", function()
-                    if vim.wo.diff then
-                        return "[c"
-                    end
-                    vim.schedule(function()
-                        gs.prev_hunk()
-                    end)
-                    return "<Ignore>"
-                end, { expr = true, desc = "Jump to previous hunk" })
-
-                -- Actions
-                -- visual mode
-                map("v", "<leader>hs", function()
-                    gs.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
-                end, { desc = "stage git hunk" })
-                map("v", "<leader>hr", function()
-                    gs.reset_hunk({ vim.fn.line("."), vim.fn.line("v") })
-                end, { desc = "reset git hunk" })
-                -- normal mode
-                map("n", "<leader>hs", gs.stage_hunk, { desc = "git stage hunk" })
-                map("n", "<leader>hr", gs.reset_hunk, { desc = "git reset hunk" })
-                map("n", "<leader>hS", gs.stage_buffer, { desc = "git Stage buffer" })
-                map("n", "<leader>hu", gs.undo_stage_hunk, { desc = "undo stage hunk" })
-                map("n", "<leader>hR", gs.reset_buffer, { desc = "git Reset buffer" })
-                map("n", "<leader>hp", gs.preview_hunk, { desc = "preview git hunk" })
-                map("n", "<leader>hb", function()
-                    gs.blame_line({ full = false })
-                end, { desc = "git blame line" })
-                map("n", "<leader>hd", gs.diffthis, { desc = "git diff against index" })
-                map("n", "<leader>hD", function()
-                    gs.diffthis("~")
-                end, { desc = "git diff against last commit" })
-
-                -- Toggles
-                map("n", "<leader>tb", gs.toggle_current_line_blame, { desc = "toggle git blame line" })
-                map("n", "<leader>td", gs.toggle_deleted, { desc = "toggle git show deleted" })
-
-                -- Text object
-                map({ "o", "x" }, "ih", ":<C-U>Gitsigns select_hunk<CR>", { desc = "select git hunk" })
-            end,
-        },
+        opts = { require("alex.plugins.gitsigns") },
+        event = "User FileOpened",
+        cmd = "Gitsigns",
     },
 
     -- Set lualine as statusline
@@ -221,7 +155,7 @@ return {
             --symbol = "│",
             options = { try_as_border = true },
         },
-        init = function()
+        init = function ()
             vim.api.nvim_create_autocmd("FileType", {
                 pattern = {
                     "help",
@@ -235,7 +169,7 @@ return {
                     "toggleterm",
                     "lazyterm",
                 },
-                callback = function()
+                callback = function ()
                     vim.b.miniindentscope_disable = true
                 end,
             })
@@ -255,7 +189,7 @@ return {
                 -- NOTE: If you are having trouble with this installation,
                 --       see the README for telescope-fzf-native
                 build = "make",
-                cond = function()
+                cond = function ()
                     return vim.fn.executable("make") == 1
                 end,
             },
@@ -277,11 +211,11 @@ return {
     {
         "akinsho/toggleterm.nvim",
         branch = "main",
-        init = function()
+        init = function ()
             local term = require("alex.plugins.toggleterm")
             term:init()
         end,
-        config = function()
+        config = function ()
             local term = require("alex.plugins.toggleterm")
             term:setup()
         end,
