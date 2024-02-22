@@ -51,6 +51,7 @@ local function get_buf_size()
     local cbuf = vim.api.nvim_get_current_buf()
     local bufinfo = vim.tbl_filter(function (buf)
         return buf.bufnr == cbuf
+        ---@diagnostic disable-next-line: param-type-mismatch
     end, vim.fn.getwininfo(vim.api.nvim_get_current_win()))[1]
     if bufinfo == nil then
         return { width = -1, height = -1 }
@@ -86,6 +87,7 @@ M.init = function ()
             count = i + 100,
             direction = direction,
             size = function ()
+                ---@diagnostic disable-next-line: param-type-mismatch
                 return get_dynamic_terminal_size(direction, exec[5])
             end,
         }
@@ -102,8 +104,10 @@ end
 M.add_exec = function (opts)
     local binary = opts.cmd:match "(%S+)"
     if vim.fn.executable(binary) ~= 1 then
-        vim.notify("Skipping configuring executable " .. binary .. ". Please make sure it is installed properly.",
-            vim.log.levels.DEBUG)
+        vim.notify(
+            "Skipping configuring executable " .. binary .. ". Please make sure it is installed properly.",
+            vim.log.levels.DEBUG
+        )
         return
     end
 
