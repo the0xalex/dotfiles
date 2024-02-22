@@ -32,6 +32,7 @@ case "$(uname -s)" in
             oha
             hyperfine
             jq
+            gh
             gnu-units
             shellcheck
             stylua
