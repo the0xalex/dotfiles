@@ -9,6 +9,7 @@ _G.require_clean = require("alex.helpers").require_clean
 _G.require_safe = require("alex.helpers").require_safe
 _G.reload = require("alex.helpers").reload
 _G.join_paths = require("alex.helpers").join_paths
+_G.cache_dir = vim.fn.expand("${XDG_CACHE_HOME:-$HOME/.cache}")
 _G.alex_config_root = vim.fn.expand("%:p:h")
 _G.user_name = "The-0xAlex"
 
@@ -20,7 +21,7 @@ local settings = {
     "keymaps",
 }
 
-M.load_settings = function()
+M.load_settings = function ()
     for _, file in ipairs(settings) do
         local mod_name = "alex" .. "." .. file
         local mod = require_safe(mod_name)
@@ -37,7 +38,7 @@ local plugins = require("alex.plugin_list")
 --- 3. Passes in the plugin table defined above for configuration.
 --- https://github.com/folke/lazy.nvim
 ---@see Lazy or `h: lazy.nvim.txt` after install
-M.load_plugins = function()
+M.load_plugins = function ()
     local lazypath = join_paths(vim.fn.stdpath("data"), "lazy", "lazy.nvim")
     -- WARN: will fail if you don't have git installed.
     if not vim.loop.fs_stat(lazypath) then
@@ -61,13 +62,13 @@ function M:init()
 
     -- Highlight on yank
     -- See `:h vim.highlight.on_yank()`
-    local highlight_group = vim.api.nvim_create_augroup('YankHighlight', { clear = true })
-    vim.api.nvim_create_autocmd('TextYankPost', {
-        callback = function()
+    local highlight_group = vim.api.nvim_create_augroup("YankHighlight", { clear = true })
+    vim.api.nvim_create_autocmd("TextYankPost", {
+        callback = function ()
             vim.highlight.on_yank()
         end,
         group = highlight_group,
-        pattern = '*',
+        pattern = "*",
     })
 end
 

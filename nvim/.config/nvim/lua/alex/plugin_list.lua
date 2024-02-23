@@ -140,6 +140,14 @@ return {
         end,
     },
 
+    -- auto-detect project root
+    {
+        "ahmedkhalf/project.nvim",
+        config = function ()
+            require("project_nvim").setup(require("alex.plugins.project"))
+        end,
+    },
+
     -- Buffers in a "tab line" on the top.  (kinda, anyway)
     {
         "akinsho/bufferline.nvim",
@@ -201,8 +209,7 @@ return {
         branch = "0.1.x",
         dependencies = {
             "nvim-lua/plenary.nvim",
-            -- Fuzzy Finder Algorithm which requires local dependencies to be built.
-            -- only loads if `make` is available.
+            -- only load fzf if `make` is available.
             {
                 "nvim-telescope/telescope-fzf-native.nvim",
                 -- NOTE: If you are having trouble with this installation,
@@ -213,6 +220,9 @@ return {
                 end,
             },
         },
+        config = function ()
+            require("alex.plugins.telescope").setup()
+        end,
     },
 
     {
