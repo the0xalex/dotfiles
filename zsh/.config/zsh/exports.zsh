@@ -31,16 +31,24 @@ setopt HIST_VERIFY                      # Don't execute immediately upon history
 
 zle_highlight=('paste:none')  # Disable highlighting for pasted text in ZLE
 
+export DEV_DIR="$HOME/Developer"
+[ ! -d "$DEV_DIR" ] && mkdir -p "$DEV_DIR"
+
+# Postgres
+export PSQL_HISTORY="${XDG_CACHE_HOME:-HOME/.cache}/psql_history"
+
 # Rust is good (https://doc.rust-lang.org/cargo/reference/environment-variables.html)
 export CARGO_HOME="$HOME/.cargo"
 export RUSTUP_HOME="$HOME/.rustup"
 
 # Jury is still out on Go.
-mkdir -p $HOME/Developer
-export GOPATH="$HOME/Developer/go"
+export GOPATH="$DEV_DIR/go"
 
 # Java is stupid
 export SDKMAN_DIR="${XDG_DATA_HOME:-HOME/.local/share}/sdkman"
+export GRADLE_USER_HOME="${XDG_CACHE_HOME:-HOME/.cache}/gradle"
+export GRADLE_HOME="${XDG_CACHE_HOME:-HOME/.cache}/gradle"
+export ANDROID_USER_HOME="${XDG_CONFIG_HOME:-HOME/.config}/android"
 
 # Platform specific stuff
 case "$(uname -s)" in

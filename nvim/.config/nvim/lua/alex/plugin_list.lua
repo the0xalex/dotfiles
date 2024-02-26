@@ -9,10 +9,11 @@ return {
     "neovim/nvim-lspconfig",             -- collection of default lsp configs
     "j-hui/fidget.nvim",                 -- display for lsp events
     "folke/neodev.nvim",                 -- lua lsp extras for neovim dev
+
     "folke/which-key.nvim",              -- show pending keybinds
 
     -- Colors
-    -- First, the schemes
+    -- First, the schemes I like
     {
         "lunarvim/lunar.nvim", -- GOAT, my default
         config = function ()
@@ -23,7 +24,7 @@ return {
     { "catppuccin/nvim",        name = "catppuccin", lazy = true }, -- other people like this.
     { "lunarvim/darkplus.nvim", lazy = true },                      -- for kids who recently evolved past vscode (honestly very complete)
 
-    -- other color related things
+    -- other color related stuffs
     -- Colorizer for inline color definition highlighting
     {
         "norcalli/nvim-colorizer.lua",
@@ -42,7 +43,6 @@ return {
             )
         end,
     },
-    -- todo-comments
     -- Parses out labelled comments and colizes the block.
     {
         "folke/todo-comments.nvim",

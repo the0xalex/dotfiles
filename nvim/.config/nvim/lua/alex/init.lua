@@ -4,14 +4,17 @@
 ---   - neovim v0.10.0+
 local M = {}
 
+local mod_name = "alex"
+
 -- Make some globals
 _G.require_clean = require("alex.helpers").require_clean
 _G.require_safe = require("alex.helpers").require_safe
 _G.reload = require("alex.helpers").reload
 _G.join_paths = require("alex.helpers").join_paths
 _G.cache_dir = vim.fn.expand("${XDG_CACHE_HOME:-$HOME/.cache}")
-_G.alex_config_root = vim.fn.expand("%:p:h")
-_G.user_name = "The-0xAlex"
+_G.nvim_config_root = vim.fn.expand("%:p:h")
+_G.alex_config_root = join_paths(vim.fn.expand("%:p:h"), "lua", "alex")
+_G.user_name = "the0xalex"
 
 --- Settings to load
 --- NOTE: These lua modules have an `:init` function by convention.
@@ -23,8 +26,7 @@ local settings = {
 
 M.load_settings = function ()
     for _, file in ipairs(settings) do
-        local mod_name = "alex" .. "." .. file
-        local mod = require_safe(mod_name)
+        local mod = require_safe(mod_name .. "." .. file)
         if mod ~= nil then mod:init() end
     end
 end
