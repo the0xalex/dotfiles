@@ -29,6 +29,7 @@ case "$(uname -s)" in
             bat
             eza
             btop
+            cloc
             oha
             hyperfine
             jq

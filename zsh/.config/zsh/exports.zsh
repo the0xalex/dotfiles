@@ -57,7 +57,7 @@ case "$(uname -s)" in
         # path variable
         typeset -U path PATH
         path=(
-            "${XDG_DATA_HOME:-HOME/.local}/bin" 
+            "$HOME/.local/bin" 
             "$CARGO_HOME/bin"
             "$RUSTUP_HOME/bin"
             "/usr/local/go/bin"
