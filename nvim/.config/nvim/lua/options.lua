@@ -1,11 +1,12 @@
 -- See `:h vim.opt`
+-- stylua: ignore
 local options = {
     backup = false,                          -- creates a backup file
     clipboard = "unnamedplus",               -- neovim to share the system clipboard `:h clipboard`
     cmdheight = 2,                           -- more space in the neovim command line for displaying messages
     completeopt = { "menuone", "noselect" }, -- mostly just for cmp
     conceallevel = 0,                        -- so that `` is visible in markdown files
-    cursorline = false,                      -- highlight the current line
+    cursorline = true,                       -- highlight the current line
     expandtab = true,                        -- convert tabs to spaces
     fileencoding = "utf-8",                  -- the encoding written to a file (ascii would be better but that's not the future we got)
     foldmethod = "manual",                   -- set to "expr" for treesitter based folding
@@ -49,7 +50,7 @@ for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
-vim.opt.spelllang:append("cjk")                            -- disable spellchecking for asian characters
+vim.opt.spelllang:append("cjk") -- disable spellchecking for asian characters
 vim.opt.shortmess:append({ W = true, I = true, C = true }) -- don't show redundant messages from ins-completion-menu
-vim.opt.isfname:append("@-@")                              -- allow @ in filenames
-vim.opt.whichwrap:append("<,>,[,],h,l")                    -- allow these keys to go to next line if at beginning/end of line in n mode
+vim.opt.isfname:append("@-@") -- allow @ in filenames
+vim.opt.whichwrap:append("<,>,[,],h,l") -- allow these keys to go to next line if at beginning/end of line in n mode
