@@ -36,7 +36,6 @@ case "$(uname -s)" in
             gh
             gnu-units
             shellcheck
-            stylua
             lazygit
             gnu-sed
             powerlevel10k
