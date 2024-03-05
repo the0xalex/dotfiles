@@ -14,12 +14,11 @@ return {
         vim.api.nvim_create_autocmd("LspAttach", {
             group = vim.api.nvim_create_augroup("alex-lsp-attach", { clear = true }),
             callback = function(event)
+                -- NOTE: Set maps here to apply to all the languages,
+                -- rather than setting specific ones for each.
                 local map = function(keys, func, desc)
                     vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
                 end
-
-                -- NOTE: Set maps here to apply to all the languages,
-                -- rather than setting specific ones for each.
 
                 -- Jump to the definition of the word under your cursor.
                 -- This is where a variable was first declared, or where a function is defined, etc.
@@ -125,8 +124,8 @@ return {
                         completion = {
                             callSnippet = "Replace",
                         },
-                        -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
-                        -- diagnostics = { disable = { 'missing-fields' } },
+                        -- Ignore Lua_LS's noisy `missing-fields` warnings
+                        diagnostics = { disable = { "missing-fields" } },
                     },
                 },
             },
@@ -158,5 +157,41 @@ return {
                 end,
             },
         })
+
+        -- Set diagnostic configuration, mostly for icons
+        local loaded, icons = pcall(require, "icons")
+        if not loaded then
+            vim.notify("Icons not loaded, not setting diagnotic icons.")
+        else
+            local diagnostic_config = {
+                signs = {
+                    active = true,
+                    values = {
+                        { name = "DiagnosticSignError", text = icons.diagnostics.Error },
+                        { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
+                        { name = "DiagnosticSignHing", text = icons.diagnostics.Hint },
+                        { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
+                    },
+                },
+                virtual_text = true,
+                update_in_insert = false,
+                underline = true,
+                severity_sort = true,
+                float = {
+                    focusable = true,
+                    style = "minimal",
+                    border = "rounded",
+                    source = "always",
+                    header = "",
+                    prefix = "",
+                },
+            }
+            vim.diagnostic.config(diagnostic_config)
+
+            ---@diagnostic disable-next-line: param-type-mismatch
+            for _, sign in ipairs(vim.tbl_get(vim.diagnostic.config(), "signs", "values") or {}) do
+                vim.fn.sign_define(sign.name, { texthl = sign.name, text = sign.text, numhl = sign.name })
+            end
+        end
     end,
 }
