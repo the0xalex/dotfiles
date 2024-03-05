@@ -93,7 +93,7 @@ return {
         --  - settings (table): Override the default settings passed when initializing the server.
         local servers = {
             -- clangd = {},
-            -- gopls = {},
+            gopls = {},
             -- pyright = {},
             -- rust_analyzer = {},
             --

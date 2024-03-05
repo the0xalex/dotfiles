@@ -12,12 +12,12 @@ vim.keymap.set("i", "<m-Right>", "<c-\\><c-n><c-w>l")
 
 --[[ MARK: Normal Mode --]]
 
-vim.keymap.set("n", "<S-h>", ":bprevious<CR>") -- load prev buffer
-vim.keymap.set("n", "<S-l>", ":bnext<CR>") -- load next buffer
+vim.keymap.set("n", "<s-h>", ":bprevious<CR>") -- load prev buffer
+vim.keymap.set("n", "<s-l>", ":bnext<CR>") -- load next buffer
 -- Keep cursor centered or stationary for:
 vim.keymap.set("n", "J", "mzJ`z") -- joins
-vim.keymap.set("n", "<C-d>", "<C-d>zz") -- half screen jump down
-vim.keymap.set("n", "<C-u>", "<C-u>zz") -- half screen jump up
+vim.keymap.set("n", "<c-d>", "<C-d>zz") -- half screen jump down
+vim.keymap.set("n", "<c-u>", "<C-u>zz") -- half screen jump up
 vim.keymap.set("n", "n", "nzzzv") -- next search result
 vim.keymap.set("n", "N", "Nzzzv") -- prev search result
 -- Window movement
@@ -41,6 +41,7 @@ vim.keymap.set("n", "<leader>-", "<c-w>s", { desc = "Split window right" })
 vim.keymap.set("n", "<leader>W", "<cmd>noautocmd w<cr>", { desc = "Write without formatting (noautocmd)" })
 vim.keymap.set("n", "<leader>w", "<cmd>w!<cr>", { desc = "Write current buffer" })
 vim.keymap.set("n", "<leader>c", ":bd<cr>", { desc = "Close buffer" })
+vim.keymap.set("n", "<leader>p", '"0p', { desc = "Put from 0 buffer" })
 vim.keymap.set(
     "n",
     "<leader>r",
@@ -71,6 +72,10 @@ vim.keymap.set("x", "p", '"_dP')
 -- runs conditionally
 vim.keymap.set("c", "<c-j>", 'pumvisible() ? "\\<c-n>" : "\\<c-j>"', { expr = true })
 vim.keymap.set("c", "<c-k>", 'pumvisible() ? "\\<c-p>" : "\\<c-k>"', { expr = true })
+vim.keymap.set("c", "<c-k>", "<Up>")
+vim.keymap.set("c", "<c-j>", "<Down>")
+vim.keymap.set("c", "<c-h>", "<Left>")
+vim.keymap.set("c", "<c-l>", "<Right>")
 
 --[[ MARK: Term Mode --]]
 
