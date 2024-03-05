@@ -65,7 +65,7 @@ return {
             col = 1,
         },
     },
-    -- TODO: add to whichkey
+    -- TODO: add to whichkey?
     init = function()
         vim.keymap.set(
             "n",
@@ -90,6 +90,18 @@ return {
             "<leader>gr",
             "<cmd>lua require('gitsigns').reset_hunk()<cr>",
             { desc = "[G]it - [r]eset hunk", noremap = true, silent = true }
+        )
+        vim.keymap.set(
+            "n",
+            "<leader>gR",
+            "<cmd>lua require('gitsigns').reset_buffer()<cr>",
+            { desc = "[G]it - [R]eset the whole buffer", noremap = true, silent = true }
+        )
+        vim.keymap.set(
+            "n",
+            "<leader>gd",
+            "<cmd>Gitsigns diffthis HEAD<cr>",
+            { desc = "[G]it - Diff", noremap = true, silent = true }
         )
     end,
 }

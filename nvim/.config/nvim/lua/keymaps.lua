@@ -38,7 +38,15 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 vim.keymap.set("n", "<leader>q", ":lua vim.diagnostic.setloclist()<cr>", { desc = "Diagnostics in quickfix list" })
 vim.keymap.set("n", "<leader>|", "<c-w>v", { desc = "Split window right" })
 vim.keymap.set("n", "<leader>-", "<c-w>s", { desc = "Split window right" })
-vim.keymap.set("n", "<leader>W", "<cmd>noautocmd w<cr>", { desc = "Write without formatting" })
+vim.keymap.set("n", "<leader>W", "<cmd>noautocmd w<cr>", { desc = "Write without formatting (noautocmd)" })
+vim.keymap.set("n", "<leader>w", "<cmd>w!<cr>", { desc = "Write current buffer" })
+vim.keymap.set("n", "<leader>c", "<cmd>BufferKill<cr>", { desc = "Close buffer" })
+vim.keymap.set(
+    "n",
+    "<leader>r",
+    [[%s/\<<c-r><c-w>\>/<c-r><c-w>/gI<Left><Left><Left>]],
+    { desc = "Edit All in Document", silent = false }
+)
 
 --[[ MARK: Visual Mode --]]
 
