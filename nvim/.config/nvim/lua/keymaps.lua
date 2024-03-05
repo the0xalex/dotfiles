@@ -40,7 +40,7 @@ vim.keymap.set("n", "<leader>|", "<c-w>v", { desc = "Split window right" })
 vim.keymap.set("n", "<leader>-", "<c-w>s", { desc = "Split window right" })
 vim.keymap.set("n", "<leader>W", "<cmd>noautocmd w<cr>", { desc = "Write without formatting (noautocmd)" })
 vim.keymap.set("n", "<leader>w", "<cmd>w!<cr>", { desc = "Write current buffer" })
-vim.keymap.set("n", "<leader>c", "<cmd>BufferKill<cr>", { desc = "Close buffer" })
+vim.keymap.set("n", "<leader>c", ":bd<cr>", { desc = "Close buffer" })
 vim.keymap.set(
     "n",
     "<leader>r",

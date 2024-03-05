@@ -71,25 +71,25 @@ return {
             "n",
             "<leader>gl",
             "<cmd>lua require('gitsigns').blame_line()<cr>",
-            { desc = "[G]it - show [l]ine blame", noremap = true, silent = true }
+            { desc = "[G]it - Show [l]ine blame", noremap = true, silent = true }
         )
         vim.keymap.set(
             "n",
             "<leader>gp",
             "<cmd>lua require('gitsigns').preview_hunk()<cr>",
-            { desc = "[G]it - [p]review hunk", noremap = true, silent = true }
+            { desc = "[G]it - [P]review hunk", noremap = true, silent = true }
         )
         vim.keymap.set(
             "n",
             "<leader>gs",
             "<cmd>lua require('gitsigns').stage_hunk()<cr>",
-            { desc = "[G]it - [s]tage hunk", noremap = true, silent = true }
+            { desc = "[G]it - [S]tage hunk", noremap = true, silent = true }
         )
         vim.keymap.set(
             "n",
             "<leader>gr",
             "<cmd>lua require('gitsigns').reset_hunk()<cr>",
-            { desc = "[G]it - [r]eset hunk", noremap = true, silent = true }
+            { desc = "[G]it - [R]eset hunk", noremap = true, silent = true }
         )
         vim.keymap.set(
             "n",
