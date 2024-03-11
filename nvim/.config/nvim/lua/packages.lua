@@ -37,6 +37,7 @@ package_manager.setup({
     require("plugins.terminal"), -- Togglable floating terminal window
     require("plugins.lsp"), -- Language Server stuff
     require("plugins.completion"), -- Autocompletion stuff
+    require("plugins.debug"), -- Debugger config
 
     -- MARK: Editing ------------
 
