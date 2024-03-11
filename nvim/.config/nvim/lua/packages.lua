@@ -49,6 +49,7 @@ package_manager.setup({
     require("plugins.gitsigns"), -- Git Status/Hunk Indicators
     require("plugins.bufferline"), -- Show buffers in the tab line at top.
     require("plugins.statusline"), -- All statusline stuff
+    require("plugins.cloak"), -- Hides values in .env files
 
     --[[ Colorschemes ]]
     -- Preview and select them with `:Telescope colorschemes`
