@@ -91,6 +91,7 @@ case "$(uname -s)" in
         stow wezterm
         stow pgadmin
         stow zsh
+        stow bun
         if [ -d $HOME/Library/Developer/Xcode/UserData/ ]; then
            mkdir -p "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
            mkdir -p "$HOME/Library/Developer/Xcode/UserData/KeyBindings"
