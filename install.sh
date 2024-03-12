@@ -33,6 +33,7 @@ case "$(uname -s)" in
             oha
             hyperfine
             jq
+            node
             gh
             gnu-units
             shellcheck

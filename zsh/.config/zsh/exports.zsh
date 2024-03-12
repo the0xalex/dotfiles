@@ -50,6 +50,10 @@ export GRADLE_USER_HOME="${XDG_CACHE_HOME:-HOME/.cache}/gradle"
 export GRADLE_HOME="${XDG_CACHE_HOME:-HOME/.cache}/gradle"
 export ANDROID_USER_HOME="${XDG_CONFIG_HOME:-HOME/.config}/android"
 
+# Bun seems like the least awful of the pile of shit that is JS
+which bun > /dev/null 2>&1 && \
+    local BUN_BIN_DIR="/Users/alex/.cache/.bun/bin"
+
 # Platform specific stuff
 case "$(uname -s)" in
     Darwin)
@@ -62,6 +66,7 @@ case "$(uname -s)" in
             "$RUSTUP_HOME/bin"
             "/usr/local/go/bin"
             "/opt/homebrew/opt/postgresql@16/bin"
+            "$BUN_BIN_DIR"
             $path
         )
         ;;
