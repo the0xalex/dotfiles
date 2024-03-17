@@ -38,6 +38,7 @@ package_manager.setup({
     require("plugins.lsp"), -- Language Server stuff
     require("plugins.completion"), -- Autocompletion stuff
     require("plugins.debug"), -- Debugger config
+    require("plugins.copilot"), -- Helpful with boilerplate
 
     -- MARK: Editing ------------
 
@@ -63,5 +64,4 @@ package_manager.setup({
     --[[ Other Color Stuff ]]
     require("plugins.nvim_colorizer"), -- Sets syntax hilight color for inline color literals
     require("plugins.todo_comments"), -- Parses out certain comments and sets hilight color
-    { "roobert/tailwindcss-colorizer-cmp.nvim" }, -- enables completion color for tailwind colors (NOTE: enable in cmp later)
 })

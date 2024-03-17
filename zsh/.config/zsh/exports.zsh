@@ -64,6 +64,7 @@ case "$(uname -s)" in
             "$HOME/.local/bin" 
             "$CARGO_HOME/bin"
             "$RUSTUP_HOME/bin"
+            "$GOPATH/bin"
             "/usr/local/go/bin"
             "/opt/homebrew/opt/postgresql@16/bin"
             "$BUN_BIN_DIR"

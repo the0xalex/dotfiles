@@ -93,6 +93,7 @@ return {
         local servers = {
             -- clangd = {},
             gopls = {},
+            htmx = {},
             -- pyright = {},
             -- rust_analyzer = {},
             --
