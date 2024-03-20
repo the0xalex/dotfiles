@@ -45,7 +45,7 @@ vim.keymap.set("n", "<leader>p", '"0p', { desc = "Put from 0 buffer" })
 vim.keymap.set(
     "n",
     "<leader>r",
-    [[%s/\<<c-r><c-w>\>/<c-r><c-w>/gI<Left><Left><Left>]],
+    [[:%s/\<<c-r><c-w>\>/<c-r><c-w>/gI<Left><Left><Left>]],
     { desc = "Edit All in Document", silent = false }
 )
 
@@ -63,8 +63,6 @@ vim.keymap.set("v", "gp", '"_dgP')
 -- Keep selection when indenting (recommend using mini.move instead)
 vim.keymap.set("x", "<", "<gv")
 vim.keymap.set("x", ">", ">gv")
--- d to black-hole register prior to paste
-vim.keymap.set("x", "p", '"_dP')
 
 --[[ MARK: Command Mode --]]
 

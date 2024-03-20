@@ -45,7 +45,7 @@ return {
                 require("luasnip.loaders.from_vscode").lazy_load()
             end,
         },
-        "roobert/tailwindcss-colorizer-cmp.nvim", -- enables completion color for tailwind colors
+        { "roobert/tailwindcss-colorizer-cmp.nvim", opts = {} }, -- completion for tailwind colors requires tailwindLSP
     },
     config = function()
         -- See `:h cmp`
