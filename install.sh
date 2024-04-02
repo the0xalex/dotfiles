@@ -104,13 +104,7 @@ case "$(uname -s)" in
     ;;
 
     Linux)
-        # Get zsh, set as shell
-        if ! command -v zsh &> /dev/null; then
-            sudo apt update
-            sudo apt install -y zsh
-        fi
-        which zsh | sudo tee -a /etc/shells
-        sudo chsh -s $(which zsh) $USER
+        sudo apt install ./fga_<version>_linux_<arch>.deb
     ;;
 
     CYGWIN* | MINGW32* | MSYS* | MINGW*)
