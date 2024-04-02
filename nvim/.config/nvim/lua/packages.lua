@@ -39,6 +39,7 @@ package_manager.setup({
     require("plugins.completion"), -- Autocompletion stuff
     require("plugins.debug"), -- Debugger config
     require("plugins.copilot"), -- Helpful with boilerplate
+    require("plugins.tailwind"), -- Tailwind class sorting, colorizer, folder.  Uses tree-sitter
 
     -- MARK: Editing ------------
 

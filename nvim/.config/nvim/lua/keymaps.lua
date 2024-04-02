@@ -66,10 +66,7 @@ vim.keymap.set("x", ">", ">gv")
 
 --[[ MARK: Command Mode --]]
 
--- navigate tab completion with <c-j> and <c-k>
--- runs conditionally
-vim.keymap.set("c", "<c-j>", 'pumvisible() ? "\\<c-n>" : "\\<c-j>"', { expr = true })
-vim.keymap.set("c", "<c-k>", 'pumvisible() ? "\\<c-p>" : "\\<c-k>"', { expr = true })
+-- control key cursor nav in command line
 vim.keymap.set("c", "<c-k>", "<Up>")
 vim.keymap.set("c", "<c-j>", "<Down>")
 vim.keymap.set("c", "<c-h>", "<Left>")
