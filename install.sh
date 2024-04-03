@@ -60,8 +60,9 @@ case "$(uname -s)" in
         for cask in "${casks[@]}"; do
             brew install --cask --no-quarantine "$cask"
         done
-        # special case for this one:
+        # Different handling for taps
         brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
+        brew tap hashicorp/tap && brew install hashicorp/tap/terraform
 
         # Install Rust 
         # https://www.rust-lang.org/tools/install
