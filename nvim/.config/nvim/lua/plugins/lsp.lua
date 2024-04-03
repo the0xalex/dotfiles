@@ -94,6 +94,7 @@ return {
             -- clangd = {},
             gopls = {},
             htmx = {},
+            terraformls = {},
             -- pyright = {},
             rust_analyzer = {},
             --
