@@ -66,3 +66,5 @@ eval "$sdkman_declaration"
 for file in "${config_files[@]}"; do
     [ -f "$file" ] && source "$file"
 done
+
+eval "$(fzf --zsh)"  # FZF keybindings and completion
