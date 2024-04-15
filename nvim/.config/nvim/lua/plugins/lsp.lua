@@ -97,11 +97,7 @@ return {
             terraformls = {},
             -- pyright = {},
             rust_analyzer = {},
-            --
-            -- Some languages (like typescript) have entire language plugins that can be useful:
-            --    https://github.com/pmizio/typescript-tools.nvim
-            --
-            -- For many setups, the LSP (`tsserver`) will work just fine
+            -- commented out in favor of typescript-tools.
             -- tsserver = {},
 
             -- https://luals.github.io/wiki/settings/

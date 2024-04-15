@@ -40,6 +40,11 @@ package_manager.setup({
     require("plugins.debug"), -- Debugger config
     require("plugins.copilot"), -- Helpful with boilerplate
     require("plugins.tailwind"), -- Tailwind class sorting, colorizer, folder.  Uses tree-sitter
+    {
+        "pmizio/typescript-tools.nvim",
+        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+        opts = {},
+    }, -- TypeScript tools
 
     -- MARK: Editing ------------
 
