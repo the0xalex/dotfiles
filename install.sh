@@ -39,6 +39,7 @@ case "$(uname -s)" in
             shellcheck
             lazygit
             gnu-sed
+            opentofu
             powerlevel10k
             'postgresql@16'
             zsh-autosuggestions
