@@ -76,12 +76,12 @@ return {
             event = { "BufReadPre", "BufNewFile" },
             symbol = "▏",
             mappings = {
-                -- set to empty string to disable
                 -- Textobjects
-                object_scope = "",
-                object_scope_with_border = "",
-                -- object_scope = "ii",
-                -- object_scope_with_border = "ai",
+                -- set to empty string to disable
+                -- object_scope = "",
+                -- object_scope_with_border = "",
+                object_scope = "ii",
+                object_scope_with_border = "ai",
 
                 -- Motions (jump to scope line top/bottom)
                 goto_top = "[i",

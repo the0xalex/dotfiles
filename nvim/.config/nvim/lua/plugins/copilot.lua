@@ -30,7 +30,6 @@ return {
             filetypes = {
                 yaml = false,
                 markdown = false,
-                terraform = false,
                 help = false,
                 gitcommit = false,
                 gitrebase = false,
