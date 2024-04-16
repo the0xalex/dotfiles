@@ -5,8 +5,9 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     opts = {
         document_color = {
-            enabled = false,
-            kind = "inline",
+            enabled = true,
+            ---@type TailwindTools.ColorHint
+            kind = "background",
             inline_symbol = "󰝤 ",
             debounce = 200,
         },

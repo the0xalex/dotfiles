@@ -8,11 +8,3 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     group = highlight_group,
     pattern = "*",
 })
-
--- Sort Tailwind CSS classes on save
-vim.api.nvim_create_autocmd("BufWritePre", {
-    callback = function()
-        vim.cmd("TailwindSort")
-    end,
-    pattern = "*.css,*.html,*.js,*.jsx,*.ts,*.tsx,*.vue,*.svelte",
-})

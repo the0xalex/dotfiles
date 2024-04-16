@@ -71,6 +71,22 @@ return {
                         callback = vim.lsp.buf.clear_references,
                     })
                 end
+                if client and client.name == "tailwindcss" then
+                    -- Order tailwind classes
+                    local loaded, _ = pcall(require, "tailwind-tools")
+                    if not loaded then
+                        vim.notify(
+                            "Tailwind tools not loaded. either install it or setup prettier plugin to order tailwind classes"
+                        )
+                    else
+                        vim.keymap.set(
+                            "n",
+                            "<leader>w",
+                            ":TailwindSort<cr>:w<cr>",
+                            { buffer = event.buf, desc = "format tailwind classes and [w]rite" }
+                        )
+                    end
+                end
             end,
         })
 
