@@ -183,7 +183,7 @@ return {
                     values = {
                         { name = "DiagnosticSignError", text = icons.diagnostics.Error },
                         { name = "DiagnosticSignWarn", text = icons.diagnostics.Warning },
-                        { name = "DiagnosticSignHing", text = icons.diagnostics.Hint },
+                        { name = "DiagnosticSignHint", text = icons.diagnostics.Hint },
                         { name = "DiagnosticSignInfo", text = icons.diagnostics.Information },
                     },
                 },
