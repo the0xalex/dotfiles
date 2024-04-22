@@ -110,7 +110,9 @@ return {
             -- clangd = {},
             gopls = {},
             htmx = {},
-            terraformls = {},
+            terraformls = {
+                filetypes = { "terraform", "hcl" },
+            },
             -- pyright = {},
             rust_analyzer = {},
             -- commented out in favor of typescript-tools.

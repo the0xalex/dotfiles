@@ -42,6 +42,7 @@ vim.keymap.set("n", "<leader>W", "<cmd>noautocmd w<cr>", { desc = "Write without
 vim.keymap.set("n", "<leader>w", "<cmd>w!<cr>", { desc = "Write current buffer" })
 vim.keymap.set("n", "<leader>c", ":bd<cr>", { desc = "Close buffer" })
 vim.keymap.set("n", "<leader>p", '"0p', { desc = "Put from 0 buffer" })
+vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "lsp format buffer" })
 vim.keymap.set(
     "n",
     "<leader>r",
@@ -52,17 +53,11 @@ vim.keymap.set(
 --[[ MARK: Visual Mode --]]
 
 -- Keep selection when indenting (recommend using mini.move instead)
-vim.keymap.set("v", "<", "<gv")
-vim.keymap.set("v", ">", ">gv")
--- d to black-hole register prior to paste
-vim.keymap.set("v", "p", '"_dP')
-vim.keymap.set("v", "gp", '"_dgP')
-
---[[ MARK: Visual Block Mode --]]
-
--- Keep selection when indenting (recommend using mini.move instead)
 vim.keymap.set("x", "<", "<gv")
 vim.keymap.set("x", ">", ">gv")
+-- d to black-hole register prior to paste, cursor at end of paste
+vim.keymap.set("x", "p", '"_dP')
+vim.keymap.set("x", "gp", '"_dgP')
 
 --[[ MARK: Command Mode --]]
 

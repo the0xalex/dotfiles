@@ -2,7 +2,8 @@
 which brew > /dev/null 2>&1 && \
     FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
 
-autoload -Uz compinit; compinit -C -D
+autoload bashcompinit && bashcompinit
+autoload -Uz compinit && compinit -C -D
 zstyle ':completion:*' menu yes select
 zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=* r:|=*'
 zmodload zsh/complist
@@ -15,3 +16,6 @@ done
 
 # Init the comps
 compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump"
+
+# init the aws completer
+complete -C aws_completer aws
