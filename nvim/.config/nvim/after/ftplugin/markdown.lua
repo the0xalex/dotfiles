@@ -1,6 +1,8 @@
 vim.opt_local.spell = true
 vim.opt_local.wrap = true
 vim.opt_local.colorcolumn = "100"
+vim.opt_local.shiftwidth = 2
+vim.opt_local.tabstop = 2
 
 -- Customize 'mini.nvim'
 local has_mini_ai, mini_ai = pcall(require, "mini.ai")

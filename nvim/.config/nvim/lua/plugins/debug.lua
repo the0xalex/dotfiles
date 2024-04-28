@@ -72,7 +72,7 @@ return {
         dap.listeners.before.event_terminated["dapui_config"] = dapui.close
         dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
-        -- Install golang specific config
+        -- Golang
         require("dap-go").setup()
     end,
 }

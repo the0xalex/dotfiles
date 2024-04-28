@@ -30,44 +30,35 @@ package_manager.setup({
 
     -- MARK: Tools -------------
 
-    require("plugins.telescope"), -- King of Fuzzy Finding
-    require("plugins.whichkey"), -- Show pending keybinds
-    require("plugins.conform"), -- Autoformat
+    require("plugins.telescope"),  -- King of Fuzzy Finding
+    require("plugins.whichkey"),   -- Show pending keybinds
+    require("plugins.conform"),    -- Autoformat
     require("plugins.treesitter"), -- Highlights and symantics
-    require("plugins.terminal"), -- Togglable floating terminal window
-    require("plugins.lsp"), -- Language Server stuff
+    require("plugins.terminal"),   -- Togglable floating terminal window
+    require("plugins.lsp"),        -- Language Server stuff
     require("plugins.completion"), -- Autocompletion stuff
-    require("plugins.debug"), -- Debugger config
-    require("plugins.copilot"), -- Helpful with boilerplate
-    require("plugins.tailwind"), -- Tailwind class sorting, colorizer, folder.  Uses tree-sitter
-    {
-        "pmizio/typescript-tools.nvim",
-        dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-        opts = {},
-    }, -- TypeScript tools
+    require("plugins.debug"),      -- Debugger config
+    require("plugins.copilot"),    -- Helpful with boilerplate
+    require("plugins.tailwind"),   -- Tailwind class sorting, colorizer, folder.  Uses tree-sitter
+    require("plugins.typescript"), -- typescript stuff includes LSP stuff
 
     -- MARK: Editing ------------
 
     { "numToStr/Comment.nvim", opts = {} }, -- "gc" and "gb" to toggle comment a line/block.
-    require("plugins.mini"), -- surrounds, text objects
+    require("plugins.mini"),                -- surrounds, text objects
 
     -- MARK: UI -----------------
 
-    require("plugins.dashboard"), -- Startup screen
-    require("plugins.gitsigns"), -- Git Status/Hunk Indicators
+    require("plugins.dashboard"),  -- Startup screen
+    require("plugins.gitsigns"),   -- Git Status/Hunk Indicators
     require("plugins.bufferline"), -- Show buffers in the tab line at top.
     require("plugins.statusline"), -- All statusline stuff
-    require("plugins.cloak"), -- Hides values in .env files
+    require("plugins.cloak"),      -- Hides values in .env files
 
     --[[ Colorschemes ]]
-    -- Preview and select them with `:Telescope colorschemes`
-    require("plugins.main_colors"), -- GOAT, my default
-    { "folke/tokyonight.nvim" }, -- The OG that the GOAT was based-on
-    { "rose-pine/neovim" }, -- I like this for some languages
-    { "catppuccin/nvim" }, -- other people like this.
-    { "lunarvim/darkplus.nvim" }, -- for kids who recently evolved past vscode (honestly very complete)
+    require("plugins.colors"),
 
     --[[ Other Color Stuff ]]
     require("plugins.nvim_colorizer"), -- Sets syntax hilight color for inline color literals
-    require("plugins.todo_comments"), -- Parses out certain comments and sets hilight color
+    require("plugins.todo_comments"),  -- Parses out certain comments and sets highlight color
 })
