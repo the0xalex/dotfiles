@@ -5,7 +5,7 @@ local wezterm = require("wezterm")
 local config = {}
 
 if wezterm.config_builder then
-    config = wezterm.config_builder()
+	config = wezterm.config_builder()
 end
 
 config.font = wezterm.font("Hack Nerd Font")
@@ -27,9 +27,11 @@ config.hide_tab_bar_if_only_one_tab = true
 -- config.color_scheme = "rose-pine"
 config.color_scheme = "Dark+"
 config.colors = {
-    selection_bg = '#6BB2C1',
-    selection_fg = '#292C34',
+	selection_bg = "#6BB2C1",
+	selection_fg = "#292C34",
 }
+config.window_background_opacity = 0.80
+config.macos_window_background_blur = 20
 
 config.window_close_confirmation = "NeverPrompt"
 
