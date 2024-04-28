@@ -1,6 +1,7 @@
 -- https://wezfurlong.org/wezterm/config/files.html
 -- Don't know lua?  read this: https://learnxinyminutes.com/docs/lua/
 local wezterm = require("wezterm")
+local keys = require("keys")
 
 local config = {}
 
@@ -8,6 +9,8 @@ if wezterm.config_builder then
 	config = wezterm.config_builder()
 end
 
+config.keys = keys
+config.window_decorations = "RESIZE"
 config.font = wezterm.font("Hack Nerd Font")
 config.font_size = 15
 config.harfbuzz_features = { "calt", "liga" }
@@ -19,9 +22,10 @@ config.default_cursor_style = "BlinkingBar"
 config.initial_cols = 120
 config.initial_rows = 70
 config.enable_tab_bar = true
-config.use_fancy_tab_bar = true
+config.use_fancy_tab_bar = false
 config.tab_bar_at_bottom = false
 config.hide_tab_bar_if_only_one_tab = true
+config.show_new_tab_button_in_tab_bar = false
 
 -- config.color_scheme = "Tokyo Night"
 -- config.color_scheme = "rose-pine"
