@@ -1,4 +1,4 @@
--- Bootstrap the "Lazy" pagage manager
+-- Bootstrap the "Lazy" package manager
 --     1. Clones the package manager if necessary
 --     2. Loads the package manager
 --     3. Passes in the plugin table defined above for configuration
