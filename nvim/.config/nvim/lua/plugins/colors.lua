@@ -10,7 +10,7 @@ return {
                 italic_comments = true,
                 hide_fillchars = true,
                 borderless_telescope = true,
-                terminal_colors = true,
+                terminal_colors = false,
                 theme = {
                     colors = {
                         bgHighlight = "#0066cc",
