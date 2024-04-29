@@ -50,7 +50,18 @@ for k, v in pairs(options) do
     vim.opt[k] = v
 end
 
-vim.opt.spelllang:append("cjk") -- disable spellchecking for asian characters
-vim.opt.shortmess:append({ W = true, I = true, C = true }) -- don't show redundant messages from ins-completion-menu
-vim.opt.isfname:append("@-@") -- allow @ in filenames
+vim.opt.spelllang:append("cjk")         -- disable spellchecking for asian characters
+vim.opt.isfname:append("@-@")           -- allow @ in filenames
 vim.opt.whichwrap:append("<,>,[,],h,l") -- allow these keys to go to next line if at beginning/end of line in n mode
+vim.opt.shortmess:append({ W = true, I = true, C = true }) -- don't show redundant messages from ins-completion-menu
+
+local disabled_plugins = {
+    "netrw",
+    "netrwPlugin",
+    "netrwSettings",
+    "netrwFileHandlers",
+}
+
+for _, plugin in pairs(disabled_plugins) do
+    vim.g["loaded_" .. plugin] = 1
+end
