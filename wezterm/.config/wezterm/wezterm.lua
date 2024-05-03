@@ -49,8 +49,8 @@ config.colors = {
 	selection_fg = "#292C34",
 }
 
-config.window_background_opacity = 0.80
-config.macos_window_background_blur = 20
+-- config.window_background_opacity = 0.80
+-- config.macos_window_background_blur = 20
 
 config.window_close_confirmation = "NeverPrompt"
 

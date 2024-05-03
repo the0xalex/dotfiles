@@ -19,6 +19,7 @@ return {
             NOTE = { icon = icons.diagnostics.Information .. " ", color = "hint", alt = { "INFO" } },
             TEST = { icon = icons.misc.Robot .. " ", color = "test", alt = { "TESTING", "PASSED", "FAILED" } },
             MARK = { icon = icons.misc.Tag .. " ", color = "mark", alt = { "HEADSUP" } },
+            go = { color = "warning" },
         },
         gui_style = {
             fg = "NONE", -- The gui style to use for the fg highlight group.

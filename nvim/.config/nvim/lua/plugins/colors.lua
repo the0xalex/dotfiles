@@ -1,26 +1,31 @@
 return {
     -- Preview and select them with `:Telescope colorschemes`
     {
-        "scottmckendry/cyberdream.nvim",
+        "lunarvim/lunar.nvim",
         lazy = false,
         priority = 1000,
         config = function()
-            require("cyberdream").setup({
-                transparent = true,
-                italic_comments = true,
-                hide_fillchars = true,
-                borderless_telescope = true,
-                terminal_colors = false,
-                theme = {
-                    colors = {
-                        bgHighlight = "#0066cc",
-                    },
-                },
-            })
-            vim.cmd.colorscheme("cyberdream")
+            vim.cmd.colorscheme("lunar")
         end,
     },
-    { "lunarvim/lunar.nvim" },
+    -- {
+    --     "scottmckendry/cyberdream.nvim",
+    --      lazy = false,
+    --      priority = 1000,
+    --      config = function()
+    --         transparent = true,
+    --         italic_comments = true,
+    --         hide_fillchars = true,
+    --         borderless_telescope = true,
+    --         terminal_colors = false,
+    --         theme = {
+    --             colors = {
+    --                 bgHighlight = "#0066cc",
+    --             },
+    --         },
+    --         end,
+    --         vim.cmd.colorscheme("cyberdream")
+    --     },
     { "folke/tokyonight.nvim" },  -- The OG that the GOAT was based-on
     { "rose-pine/neovim" },       -- I like this for some languages
     { "catppuccin/nvim" },        -- other people like this.
