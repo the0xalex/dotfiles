@@ -34,6 +34,18 @@ zle_highlight=('paste:none')  # Disable highlighting for pasted text in ZLE
 export DEV_DIR="$HOME/Developer"
 [ ! -d "$DEV_DIR" ] && mkdir -p "$DEV_DIR"
 
+# fzf settings https://github.com/junegunn/fzf
+#
+# Preview file content using bat (https://github.com/sharkdp/bat)
+export FZF_CTRL_T_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'bat -n --color=always --theme \"Visual Studio Dark+\" {}'
+  --bind 'ctrl-/:change-preview-window(down|hidden|)'"
+# Print tree structure in the preview window
+export FZF_ALT_C_OPTS="
+  --walker-skip .git,node_modules,target
+  --preview 'eza -T {}'"
+
 # Postgres
 export PSQL_HISTORY="${XDG_CACHE_HOME:-HOME/.cache}/psql_history"
 
