@@ -38,7 +38,7 @@ package_manager.setup({
     require("plugins.lsp"),        -- Language Server stuff
     require("plugins.completion"), -- Autocompletion stuff
     require("plugins.debug"),      -- Debugger config
-    require("plugins.copilot"),    -- Helpful with boilerplate
+    require("plugins.supermaven"), -- Better copilot.  Helpful with boilerplate
     require("plugins.tailwind"),   -- Tailwind class sorting, colorizer, folder.  Uses tree-sitter
     require("plugins.typescript"), -- typescript stuff includes LSP stuff
 

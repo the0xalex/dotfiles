@@ -116,24 +116,24 @@ local components = {
             end
 
             local buf_client_names = {}
-            local copilot_active = false
+            local supermaven_active = false
 
             -- add client
             for _, client in pairs(buf_clients) do
-                if client.name ~= "copilot" then
+                if client.name ~= "Supermaven" then
                     table.insert(buf_client_names, client.name)
                 end
 
-                if client.name == "copilot" then
-                    copilot_active = true
+                if client.name == "Supermaven" then
+                    supermaven_active = true
                 end
             end
 
             local unique_client_names = table.concat(buf_client_names, ", ")
             local language_servers = string.format("[%s]", unique_client_names)
 
-            if copilot_active then
-                language_servers = language_servers .. "%#SLCopilot#" .. " " .. icons.git.Octoface .. "%*"
+            if supermaven_active then
+                language_servers = language_servers .. "%#SLCopilot#" .. " " .. icons.misc.Robot .. "%*"
             end
 
             return language_servers
