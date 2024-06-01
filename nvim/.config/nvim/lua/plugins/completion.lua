@@ -3,7 +3,7 @@ local source_names = {
     nvim_lsp = "(LSP)",
     path = "(Path)",
     luasnip = "(Snippet)",
-    supermaven = "(SuperMaven)",
+    supermaven = "(SupMav)",
 }
 local duplicates = {
     buffer = 1,
@@ -78,7 +78,7 @@ return {
 
                     -- Set my icons
                     vim_item.kind = icons.kind[vim_item.kind]
-                    if entry.source.name == "Supermaven" then
+                    if entry.source.name == "supermaven" then
                         vim_item.kind = icons.misc.Robot
                     end
                     vim_item.menu = source_names[entry.source.name]
@@ -127,10 +127,10 @@ return {
                 end, { "i", "s" }),
             }),
             sources = {
-                { name = "supermaven" },
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
                 { name = "path" },
+                { name = "supermaven" },
             },
             {
                 { name = "buffer" },
