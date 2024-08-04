@@ -40,7 +40,8 @@ package_manager.setup({
     require("plugins.debug"),      -- Debugger config
     require("plugins.supermaven"), -- Better copilot.  Helpful with boilerplate
     require("plugins.tailwind"),   -- Tailwind class sorting, colorizer, folder.  Uses tree-sitter
-    require("plugins.typescript"), -- typescript stuff includes LSP stuff
+    require("plugins.typescript"), -- Typescript stuff includes LSP stuff
+    require("plugins.spectre"),    -- Find and replace
 
     -- MARK: Editing ------------
 
@@ -54,6 +55,7 @@ package_manager.setup({
     require("plugins.bufferline"), -- Show buffers in the tab line at top.
     require("plugins.statusline"), -- All statusline stuff
     require("plugins.cloak"),      -- Hides values in .env files
+    require("plugins.markview"),   -- An in editor markdown previewer
 
     --[[ Colorschemes ]]
     require("plugins.colors"),

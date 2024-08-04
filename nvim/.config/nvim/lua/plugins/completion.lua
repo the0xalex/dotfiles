@@ -36,20 +36,12 @@ return {
         --  into multiple repos for maintenance purposes.
         "hrsh7th/cmp-nvim-lsp",
         "hrsh7th/cmp-path",
-
-        -- Contains a variety of premade snippets.
-        -- See https://github.com/rafamadriz/friendly-snippets
-        {
-            "rafamadriz/friendly-snippets",
-            config = function()
-                require("luasnip.loaders.from_vscode").lazy_load()
-            end,
-        },
     },
     config = function()
         -- See `:h cmp`
         local cmp = require("cmp")
         local luasnip = require("luasnip")
+        require("luasnip.loaders.from_vscode").lazy_load({ paths = "./alex-snippets" })
         luasnip.config.setup({})
 
         cmp.setup({
@@ -130,10 +122,12 @@ return {
                 { name = "nvim_lsp" },
                 { name = "luasnip" },
                 { name = "path" },
-                { name = "supermaven" },
             },
             {
                 { name = "buffer" },
+            },
+            {
+                { name = "supermaven" },
             },
         })
     end,

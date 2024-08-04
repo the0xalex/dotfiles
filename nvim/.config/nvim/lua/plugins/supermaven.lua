@@ -4,7 +4,7 @@ return {
     "supermaven-inc/supermaven-nvim",
     opts = {
         keymaps = {
-            accept_suggestion = "<c-y>",
+            accept_suggestion = "<tab>",
             clear_suggestion = "<c-]>",
             accept_word = "<c-cr>",
         },
