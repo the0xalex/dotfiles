@@ -47,9 +47,7 @@ case "$(uname -s)" in
             zsh-history-substring-search
         )
         local casks=(
-            #iterm2
             wezterm
-            pgadmin4
             gitkraken
             docker
             intellij-idea
@@ -91,7 +89,6 @@ case "$(uname -s)" in
         stow nvim
         stow btop
         stow wezterm
-        stow pgadmin
         stow zsh
         stow bun
         if [ -d $HOME/Library/Developer/Xcode/UserData/ ]; then
@@ -99,10 +96,6 @@ case "$(uname -s)" in
            mkdir -p "$HOME/Library/Developer/Xcode/UserData/KeyBindings"
            stow xcode
         fi
-
-        local pgadmin_config_dir="/Applications/pgAdmin 4.app/Contents/Resources/web" 
-        [ -d "$pgadmin_config_dir" ] && \
-            ln -s "$HOME/.config/pgadmin/config_local.py" "$pgadmin_config_dir"
     ;;
 
     Linux)
