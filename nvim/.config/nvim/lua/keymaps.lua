@@ -40,7 +40,7 @@ vim.keymap.set("n", "<leader>|", "<c-w>v", { desc = "Split window right" })
 vim.keymap.set("n", "<leader>-", "<c-w>s", { desc = "Split window right" })
 vim.keymap.set("n", "<leader>W", "<cmd>noautocmd w<cr>", { desc = "Write without formatting (noautocmd)" })
 vim.keymap.set("n", "<leader>w", "<cmd>w!<cr>", { desc = "Write current buffer" })
-vim.keymap.set("n", "<leader>c", ":bd<cr>", { desc = "Close buffer" })
+vim.keymap.set("n", "<leader>bd", ":bd<cr>", { desc = "Close current buffer" })
 vim.keymap.set("n", "<leader>p", '"0p', { desc = "Put from 0 buffer" })
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "lsp format buffer" })
 vim.keymap.set(
@@ -49,15 +49,15 @@ vim.keymap.set(
     [[:%s/\<<c-r><c-w>\>/<c-r><c-w>/gI<Left><Left><Left>]],
     { desc = "Edit All in Document", silent = false }
 )
+-- requires bufferline
+vim.keymap.set("n", "<leader>bl", ":BufferLineCloseRight<cr>", { desc = "Close [b]uffers to the right" })
+vim.keymap.set("n", "<leader>bh", ":BufferLineCloseLeft<cr>", { desc = "Close [b]uffers to the left" })
 
 --[[ MARK: Visual Mode --]]
 
 -- Keep selection when indenting (recommend using mini.move instead)
 vim.keymap.set("x", "<", "<gv")
 vim.keymap.set("x", ">", ">gv")
--- d to black-hole register prior to paste, cursor at end of paste
-vim.keymap.set("x", "p", '"_dP')
-vim.keymap.set("x", "gp", '"_dgP')
 
 --[[ MARK: Command Mode --]]
 

@@ -12,10 +12,9 @@ return {
             indent = { enable = true },
         })
 
-        -- There are additional nvim-treesitter modules that you can interact
-        -- with nvim-treesitter. e.g.
-        --   - Incremental selection: Included, see :help nvim-treesitter-incremental-selection-mod
-        --   - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-        --   - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
+        -- Treesitter node introspection is part of nvim core now.
+        -- - :Inspect
+        -- - :InspectTree
+        -- - :EditQuery
     end,
 }

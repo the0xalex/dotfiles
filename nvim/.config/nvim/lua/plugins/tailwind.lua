@@ -15,6 +15,7 @@ return {
         "astro",
         "templ",
     },
+    -- ---@type TailwindTools.Option
     opts = {
         document_color = {
             enabled = true,
@@ -30,6 +31,11 @@ return {
                 fg = "#38BDF8",
             },
         },
-        custom_filetypes = {},
+        extension = {
+            queries = {
+                "typescriptreact",
+                "tsx",
+            },
+        },
     },
 }

@@ -78,5 +78,17 @@ return {
             "<cmd>Gitsigns diffthis HEAD<cr>",
             { desc = "[G]it - Diff", noremap = true, silent = true }
         )
+        vim.keymap.set(
+            "n",
+            "]g",
+            "<cmd>Gitsigns next_hunk HEAD<cr>",
+            { desc = "Next git hunk", noremap = true, silent = true }
+        )
+        vim.keymap.set(
+            "n",
+            "[g",
+            "<cmd>Gitsigns prev_hunk HEAD<cr>",
+            { desc = "Previous git hunk", noremap = true, silent = true }
+        )
     end,
 }

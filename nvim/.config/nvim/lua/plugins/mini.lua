@@ -2,8 +2,10 @@
 --   See https://github.com/echasnovski/mini.nvim
 return {
     "echasnovski/mini.nvim",
-    version = "*",
+    version = false,
     config = function()
+        require("mini.icons").setup()
+
         -- Better Around/Inside textobjects
         --
         -- Examples:
