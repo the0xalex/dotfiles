@@ -2,16 +2,10 @@ return {
     "OXY2DEV/markview.nvim",
     ft = "markdown",
     config = function()
-        local presets = require("markview.presets")
+        local heading_presets = require("markview.presets").headings
+
         require("markview").setup({
-            headings = presets.headings.decorated_labels,
+            headings = heading_presets.glow_labels,
         })
     end,
-
-    dependencies = {
-        -- You may not need this if you don't lazy load
-        -- Or if the parsers are in your $RUNTIMEPATH
-        "nvim-treesitter/nvim-treesitter",
-        -- "nvim-tree/nvim-web-devicons",
-    },
 }

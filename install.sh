@@ -32,6 +32,7 @@ case "$(uname -s)" in
             cloc
             oha
             hyperfine
+            k6
             jq
             node
             gh
@@ -39,8 +40,8 @@ case "$(uname -s)" in
             shellcheck
             lazygit
             gnu-sed
-            opentofu
             powerlevel10k
+            neonctl
             'postgresql@16'
             zsh-autosuggestions
             zsh-syntax-highlighting
@@ -50,8 +51,6 @@ case "$(uname -s)" in
             wezterm
             gitkraken
             docker
-            intellij-idea
-            android-studio
         )
         for formula in "${formulae[@]}"; do
             brew install "$formula"
@@ -61,7 +60,6 @@ case "$(uname -s)" in
         done
         # Different handling for taps
         brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
-        brew tap hashicorp/tap && brew install hashicorp/tap/terraform
 
         # Install Rust 
         # https://www.rust-lang.org/tools/install

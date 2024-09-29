@@ -20,6 +20,8 @@ Darwin)
         alias cat="bat -pp --tabs=4 --theme \"Visual Studio Dark+\""
     which rg > /dev/null 2>&1 && \
         alias grep="rg"
+    which gsed > /dev/null 2>&1 && \
+        alias sed="gsed"
     ;;
 
 Linux)
