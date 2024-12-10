@@ -1,4 +1,5 @@
 case "$(uname -s)" in
+    # NOTE: Install Xcode first.
     Darwin)
         defaults write -g InitialKeyRepeat -int 12
         defaults write -g KeyRepeat -int 1
@@ -51,6 +52,7 @@ case "$(uname -s)" in
             gitkraken
             linear-linear
             docker
+            font-hack-nerd-font
         )
         for formula in "${formulae[@]}"; do
             brew install "$formula"
@@ -58,8 +60,6 @@ case "$(uname -s)" in
         for cask in "${casks[@]}"; do
             brew install --cask --no-quarantine "$cask"
         done
-        # Different handling for taps
-        brew tap homebrew/cask-fonts && brew install --cask font-hack-nerd-font
 
         # Install Rust 
         # https://www.rust-lang.org/tools/install
