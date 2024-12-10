@@ -6,8 +6,8 @@ optional = true
 dev = true
 peer = true
 production = false # Ignore dev dependencies. Use --production in the CLI to override.
-globalDir = "${XDG_CACHE_HOME:-$HOME/.cache}/.bun/install/global"
-globalBinDir = "${XDG_CACHE_HOME:-$HOME/.cache}/.bun/bin"
+globalDir = "$HOME/.cache/.bun/install/global"
+globalBinDir = "$HOME/.cache}/.bun/bin"
 
 [install.cache]
-dir = "${XDG_CACHE_HOME:-$HOME/.cache}/.bun/install/cache"
+dir = "$HOME/.cache/.bun/install/cache"

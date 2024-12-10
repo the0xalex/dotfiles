@@ -41,8 +41,7 @@ case "$(uname -s)" in
             lazygit
             gnu-sed
             powerlevel10k
-            neonctl
-            'postgresql@16'
+            'postgresql@17'
             zsh-autosuggestions
             zsh-syntax-highlighting
             zsh-history-substring-search
@@ -50,6 +49,7 @@ case "$(uname -s)" in
         local casks=(
             wezterm
             gitkraken
+            linear-linear
             docker
         )
         for formula in "${formulae[@]}"; do
@@ -97,7 +97,6 @@ case "$(uname -s)" in
     ;;
 
     Linux)
-        sudo apt install ./fga_<version>_linux_<arch>.deb
     ;;
 
     CYGWIN* | MINGW32* | MSYS* | MINGW*)

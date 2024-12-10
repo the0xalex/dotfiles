@@ -143,6 +143,22 @@ return {
                     },
                 },
             },
+
+            -- https://github.com/GroovyLanguageServer/groovy-language-server
+            groovyls = {
+                filetypes = { "groovy" },
+                --cmd = { groovyls },
+                settings = {
+                    groovy = {
+                        classpath = {
+                            "/Users/alex/Developer/work/z-web/source/app/.gradle/caches/",
+                            "/Users/alex/Developer/work/z-web/source/app/build/classes/",
+                            "/Users/alex/Developer/work/z-web/source/app/build/libs/",
+                            "/Users/alex/.local/share/sdkman/candidates/grails/current/lib/",
+                        },
+                    },
+                },
+            },
         }
 
         -- Ensure the servers and tools above are installed

@@ -3,6 +3,8 @@ alias cp="cp -i"
 alias mv='mv -i'
 alias rm='rm -i'
 
+alias dc='docker compose'
+
 # Platform specific
 case "$(uname -s)" in
 Darwin)
