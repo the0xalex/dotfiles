@@ -51,6 +51,7 @@ case "$(uname -s)" in
             wezterm
             gitkraken
             linear-linear
+            tableplus
             docker
             font-hack-nerd-font
         )

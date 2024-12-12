@@ -78,7 +78,7 @@ case "$(uname -s)" in
             "$RUSTUP_HOME/bin"
             "$GOPATH/bin"
             "/usr/local/go/bin"
-            "/opt/homebrew/opt/postgresql@16/bin"
+            "/opt/homebrew/opt/postgresql@17/bin"
             "$BUN_BIN_DIR"
             $path
         )
