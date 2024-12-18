@@ -24,7 +24,7 @@ config.keys = {
 
 config.window_decorations = "RESIZE"
 config.font = wezterm.font("Hack Nerd Font")
-config.font_size = 15
+config.font_size = 18
 config.harfbuzz_features = { "calt", "liga" }
 config.front_end = "WebGpu"
 config.enable_scroll_bar = false
@@ -40,9 +40,6 @@ config.tab_bar_at_bottom = false
 config.hide_tab_bar_if_only_one_tab = true
 config.show_new_tab_button_in_tab_bar = false
 
--- config.color_scheme = "Tokyo Night"
--- config.color_scheme = "rose-pine"
--- config.colors = require("kanagawa").colors
 config.color_scheme = "Dark+"
 config.colors = {
 	selection_bg = "#6BB2C1",
