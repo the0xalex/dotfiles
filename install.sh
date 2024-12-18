@@ -64,7 +64,7 @@ case "$(uname -s)" in
 
         # Install Rust 
         # https://www.rust-lang.org/tools/install
-        [ ! command -v "rustc --version" >/dev/null 2>&1 ] && \
+        ! rustc --version >/dev/null 2>&1 && \
             curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh -s -- -y --no-modify-path
 
         # Install Bun

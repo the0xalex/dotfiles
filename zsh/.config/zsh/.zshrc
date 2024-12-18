@@ -8,6 +8,7 @@ export HISTFILE="${XDG_CACHE_HOME:-HOME/.cache}/zsh_history"
 LESSHISTFILE=-              # Do not persist Less query data (default pager)
 HISTSIZE=1000000            # Size limit (bytes) of the shell history file
 SAVEHIST=800000             # (starts rotating at +20%)
+# other history opts are set in `exports.zsh`
 
 # Platform dependent config
 case "$(uname -s)" in

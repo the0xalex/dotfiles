@@ -108,15 +108,14 @@ return {
         --  - settings (table): Override the default settings passed when initializing the server.
         local servers = {
             -- clangd = {},
-            gopls = {},
-            htmx = {},
-            terraformls = {
-                filetypes = { "terraform", "hcl" },
-            },
+            -- gopls = {},
+            -- htmx = {},
+            -- terraformls = {
+            --     filetypes = { "terraform", "hcl" },
+            -- },
             -- pyright = {},
-            rust_analyzer = {},
-            -- commented out in favor of typescript-tools.
-            -- tsserver = {},
+            -- rust_analyzer = {},
+            -- tsserver = {}, -- commented out in favor of typescript-tools.
 
             -- https://luals.github.io/wiki/settings/
             lua_ls = {
