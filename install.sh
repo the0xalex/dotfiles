@@ -1,6 +1,10 @@
 case "$(uname -s)" in
-    # NOTE: Install Xcode first.
     Darwin)
+        #
+        # WARN: Install Xcode first.
+        #   Then- `sudo xcodebuild -license accept`
+        #   (or run the gui and accept)
+        #
         defaults write -g InitialKeyRepeat -int 12
         defaults write -g KeyRepeat -int 1
         
