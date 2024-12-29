@@ -1,0 +1,23 @@
+# For defaults and docs, run:
+#   ghostty +show-config --default --docs | vim -R
+#
+# See also: https://ghostty.org/docs
+# ------------------------------------------------
+
+confirm-close-surface = false
+quit-after-last-window-closed = true
+
+clipboard-read = allow
+clipboard-write = allow
+clipboard-trim-trailing-spaces = true
+
+font-size = 18
+font-family = "Hack Nerd Font"
+window-title-font-family = "Hack Nerd Font"
+
+theme = dark:tokyonight, light:catppuccin-latte
+
+window-height = 90
+window-width = 180
+
+window-save-state = always

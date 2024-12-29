@@ -52,7 +52,7 @@ case "$(uname -s)" in
             zsh-history-substring-search
         )
         local casks=(
-            wezterm
+            ghostty
             gitkraken
             linear-linear
             tableplus
@@ -91,7 +91,7 @@ case "$(uname -s)" in
         stow git
         stow nvim
         stow btop
-        stow wezterm
+        stow ghostty
         stow zsh
         stow bun
         if [ -d $HOME/Library/Developer/Xcode/UserData/ ]; then
