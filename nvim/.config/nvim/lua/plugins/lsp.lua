@@ -187,6 +187,13 @@ return {
             },
         })
 
+        vim.lsp.config("wgsl_analyzer", {
+            cmd = { "wgsl-analyzer" },
+            filetypes = { "wgsl" },
+            setup = {},
+        })
+        vim.lsp.enable("wgsl_analyzer")
+
         -- Set diagnostic configuration, mostly for icons
         local loaded, icons = pcall(require, "icons")
         if not loaded then

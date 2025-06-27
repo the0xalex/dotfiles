@@ -12,7 +12,7 @@ return {
         "jay-babu/mason-nvim-dap.nvim",
 
         -- Add debuggers (DAP servers/adapters) below
-        "leoluz/nvim-dap-go",
+        -- "leoluz/nvim-dap-go",
     },
     config = function()
         local dap = require("dap")
@@ -26,7 +26,7 @@ return {
             -- see mason-nvim-dap README for more information
             handlers = {},
             ensure_installed = {
-                "delve", -- Go (https://github.com/go-delve/delve)
+                -- "delve", -- Go (https://github.com/go-delve/delve)
             },
         })
 
@@ -73,6 +73,6 @@ return {
         dap.listeners.before.event_exited["dapui_config"] = dapui.close
 
         -- Golang
-        require("dap-go").setup()
+        -- require("dap-go").setup()
     end,
 }

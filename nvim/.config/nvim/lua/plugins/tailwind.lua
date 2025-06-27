@@ -2,6 +2,8 @@ return {
     -- Various tailwindcss lsp and completion tools.
     -- See https://github.com/luckasRanarison/tailwind-tools.nvim
     "luckasRanarison/tailwind-tools.nvim",
+    name = "tailwind-tools",
+    build = ":UpdateRemotePlugins",
     dependencies = { "nvim-treesitter/nvim-treesitter" },
     ft = {
         "html",

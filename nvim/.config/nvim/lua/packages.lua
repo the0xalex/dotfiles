@@ -30,18 +30,18 @@ package_manager.setup({
 
     -- MARK: Tools -------------
 
-    require("plugins.telescope"),  -- King of Fuzzy Finding
-    require("plugins.whichkey"),   -- Show pending keybinds
-    require("plugins.conform"),    -- Autoformat
-    require("plugins.treesitter"), -- Highlights and symantics
-    require("plugins.terminal"),   -- Togglable floating terminal window
-    require("plugins.lsp"),        -- Language Server stuff
-    require("plugins.completion"), -- Autocompletion stuff
-    require("plugins.debug"),      -- Debugger config
-    require("plugins.supermaven"), -- Better copilot.  Helpful with boilerplate
-    require("plugins.tailwind"),   -- Tailwind class sorting, colorizer, folder.  Uses tree-sitter
-    require("plugins.typescript"), -- Typescript stuff includes LSP stuff
-    require("plugins.spectre"),    -- Find and replace
+    require("plugins.telescope"),   -- King of Fuzzy Finding
+    require("plugins.whichkey"),    -- Show pending keybinds
+    require("plugins.conform"),     -- Autoformat
+    require("plugins.treesitter"),  -- Highlights and symantics
+    require("plugins.terminal"),    -- Togglable floating terminal window
+    require("plugins.lsp"),         -- Language Server stuff
+    require("plugins.completion"),  -- Autocompletion stuff
+    require("plugins.debug"),       -- Debugger config
+    require("plugins.supermaven"),  -- Better copilot.  Helpful with boilerplate
+    require("plugins.tailwind"),    -- Tailwind class sorting, colorizer, folder.  Uses tree-sitter
+    require("plugins.typescript"),  -- Typescript stuff includes LSP stuff
+    require("plugins.spectre"),     -- Find and replace
 
     -- MARK: Editing ------------
 
@@ -50,17 +50,17 @@ package_manager.setup({
 
     -- MARK: UI -----------------
 
-    require("plugins.dashboard"),  -- Startup screen
-    require("plugins.gitsigns"),   -- Git Status/Hunk Indicators
-    require("plugins.bufferline"), -- Show buffers in the tab line at top.
-    require("plugins.statusline"), -- All statusline stuff
-    require("plugins.cloak"),      -- Hides values in .env files
-    require("plugins.markview"),   -- An in editor markdown previewer
+    require("plugins.dashboard"),   -- Startup screen
+    require("plugins.gitsigns"),    -- Git Status/Hunk Indicators
+    require("plugins.bufferline"),  -- Show buffers in the tab line at top.
+    require("plugins.statusline"),  -- All statusline stuff
+    require("plugins.cloak"),       -- Hides values in .env files
+    require("plugins.markview"),    -- An in editor markdown previewer
 
     --[[ Colorschemes ]]
     require("plugins.colors"),
 
     --[[ Other Color Stuff ]]
-    require("plugins.nvim_colorizer"), -- Sets syntax hilight color for inline color literals
-    require("plugins.todo_comments"),  -- Parses out certain comments and sets highlight color
+    require("plugins.nvim_colorizer"),  -- Sets syntax hilight color for inline color literals
+    require("plugins.todo_comments"),   -- Parses out certain comments and sets highlight color
 })

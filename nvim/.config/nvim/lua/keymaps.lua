@@ -49,6 +49,12 @@ vim.keymap.set(
     [[:%s/\<<c-r><c-w>\>/<c-r><c-w>/gI<Left><Left><Left>]],
     { desc = "Edit All in Document", silent = false }
 )
+vim.keymap.set(
+    "n",
+    "<leader>x",
+    ":execute '!cat % > ~/Desktop/' . expand('%:t:r') . '.txt'<cr>",
+    { desc = "Export file to Desktop", silent = false }
+)
 -- requires bufferline
 vim.keymap.set("n", "<leader>bl", ":BufferLineCloseRight<cr>", { desc = "Close [b]uffers to the right" })
 vim.keymap.set("n", "<leader>bh", ":BufferLineCloseLeft<cr>", { desc = "Close [b]uffers to the left" })
