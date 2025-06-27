@@ -7,6 +7,7 @@ case "$(uname -s)" in
         #
         defaults write -g InitialKeyRepeat -int 12
         defaults write -g KeyRepeat -int 1
+        defaults write com.apple.finder AppleShowAllFiles -boolean true;
         
         # Homebrew 
         # https://brew.sh
