@@ -24,6 +24,13 @@ Darwin)
         alias grep="rg"
     which gsed > /dev/null 2>&1 && \
         alias sed="gsed"
+
+    which gh > /dev/null 2>&1 && \
+        alias ghprn='gh pr create -a @me -B preview -r DominicMDev -t'
+
+    which fast > /dev/null 2>&1 && \
+        alias ifeeltheneed="fast --upload --json"
+    alias work="$HOME/Developer/work/"
     ;;
 
 Linux)

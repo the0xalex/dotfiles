@@ -46,6 +46,9 @@ export FZF_ALT_C_OPTS="
   --walker-skip .git,node_modules,target
   --preview 'eza -T {}'"
 
+# Python
+export PYTHON_HISTORY="${XDG_CACHE_HOME:-HOME/.cache}/python_history"
+
 # Postgres
 export PSQL_HISTORY="${XDG_CACHE_HOME:-HOME/.cache}/psql_history"
 

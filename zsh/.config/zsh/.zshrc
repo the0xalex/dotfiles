@@ -69,3 +69,10 @@ for file in "${config_files[@]}"; do
 done
 
 eval "$(fzf --zsh)"  # FZF keybindings and completion
+
+# bun completions
+[ -s "/opt/homebrew/Cellar/bun/1.1.42/share/zsh/site-functions/_bun" ] && source "/opt/homebrew/Cellar/bun/1.1.42/share/zsh/site-functions/_bun"
+
+# Crap for emscripten...
+export EMSDK_QUIET=1
+source "/Users/alex/.local/share/emsdk/emsdk_env.sh"
