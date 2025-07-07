@@ -1,7 +1,7 @@
 # For defaults and docs, run:
 #   ghostty +show-config --default --docs | vim -R
 #
-# See also: https://ghostty.org/docs
+# See also: https://ghostty.org/docs/config
 # ------------------------------------------------
 
 confirm-close-surface = false
@@ -21,3 +21,6 @@ window-height = 90
 window-width = 180
 
 window-save-state = always
+window-colorspace = display-p3
+
+macos-icon = xray
