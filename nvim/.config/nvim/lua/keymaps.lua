@@ -31,8 +31,6 @@ vim.keymap.set("n", "<c-Down>", ":resize +2<cr>")
 vim.keymap.set("n", "<c-Left>", ":vertical resize -2<cr>")
 vim.keymap.set("n", "<c-Right>", ":vertical resize +2<cr>")
 -- Diagnostics
-vim.keymap.set("n", "[d", vim.diagnostic.goto_prev, { desc = "Jump to previous [d]iagnostic message" })
-vim.keymap.set("n", "]d", vim.diagnostic.goto_next, { desc = "Jump to next [d]iagnostic message" })
 vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 -- TODO: move to whichkey
 vim.keymap.set("n", "<leader>q", ":lua vim.diagnostic.setloclist()<cr>", { desc = "Diagnostics in quickfix list" })

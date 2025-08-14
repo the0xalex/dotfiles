@@ -210,7 +210,6 @@ return {
 
             for _, level in pairs(severities) do
                 signs.text[sev[level.name]] = level.text
-                signs.linehl[sev[level.name]] = level.hl
                 signs.numhl[sev[level.name]] = level.hl
             end
 

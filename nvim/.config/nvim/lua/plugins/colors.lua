@@ -11,17 +11,20 @@ return {
                     c.comment = "#6f6fb8"
                     c.bg_highlight = "#292e52"
                 end,
-                on_highlights = function(hl, _)
+                on_highlights = function(hl, c)
                     hl.Visual = {
                         bg = "#2020e0",
                         fg = "#ffffff",
+                    }
+                    hl.DiagnosticUnnecessary = {
+                        fg = c.comment,
                     }
                 end,
             })
             vim.cmd.colorscheme("tokyonight-night")
         end,
     },
-    { "rose-pine/neovim" },       -- I like this for some languages
-    { "catppuccin/nvim" },        -- other people like this.
+    { "rose-pine/neovim" }, -- I like this for some languages
+    { "catppuccin/nvim" }, -- other people like this.
     { "lunarvim/darkplus.nvim" }, -- for kids who recently evolved past vscode (honestly very complete)
 }

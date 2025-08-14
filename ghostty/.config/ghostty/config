@@ -22,5 +22,3 @@ window-width = 180
 
 window-save-state = always
 window-colorspace = display-p3
-
-macos-icon = xray
