@@ -42,6 +42,7 @@ package_manager.setup({
     require("plugins.tailwind"),    -- Tailwind class sorting, colorizer, folder.  Uses tree-sitter
     require("plugins.typescript"),  -- Typescript stuff includes LSP stuff
     require("plugins.spectre"),     -- Find and replace
+    require("plugins.opencode"),    -- nvim AI tooling that attempts to not suck
 
     -- MARK: Editing ------------
 

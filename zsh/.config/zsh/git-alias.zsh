@@ -6,6 +6,40 @@ git_version="${${(As: :)$(git version 2>/dev/null)}[3]}"
 # Functions
 #
 
+function _git_worktree_custom_list() {
+    if ! which fzf > /dev/null 2>&1; then
+        git worktree list
+    else
+        local worktree_path
+        worktree_path=$(git worktree list | fzf \
+            --height=70% \
+            --layout=reverse \
+            --border=rounded \
+            --preview '
+                echo -e "\033[1;36m=== Worktree Info ===\033[0m"
+                echo -e "\033[33mPath:\033[0m {1}"
+                branch=$(echo "{3}" | sed "s/\[//g; s/\]//g")
+                echo -e "\033[33mBranch:\033[0m $branch"
+                echo ""
+                echo -e "\033[1;32m=== Git Status ===\033[0m"
+                git -C {1} -c color.ui=always status --short 2>/dev/null | head -10 || echo "No changes"
+                echo ""
+                echo -e "\033[1;35m=== Recent Commits ===\033[0m"
+                git -C {1} log --color=always --pretty='\''%Cred%h%Creset %s %Cgreen(%ad) %C(bold blue)<%an>%Creset'\'' --date=short -5 2>/dev/null || echo "No commit history available"
+            ' \
+            --preview-window='right:65%:wrap' \
+            --prompt='Select Worktree> ' \
+            --header='[ESC|^c] - cancel' \
+            --color='header:italic:underline,prompt:blue,pointer:red' \
+            | awk '{print $1}')
+        
+        if [[ -n "$worktree_path" ]]; then
+            echo "📁 Switching to: $worktree_path"
+            cd "$worktree_path"
+        fi
+    fi
+}
+
 # The git prompt's git commands are read-only and should not interfere with
 # other processes. This environment variable is equivalent to running with `git
 # --no-optional-locks`, but falls back gracefully for older versions of git.
@@ -352,7 +386,7 @@ alias gwip='git add -A; git rm $(git ls-files --deleted) 2> /dev/null; git commi
 
 alias gwt='git worktree'
 alias gwta='git worktree add'
-alias gwtls='git worktree list'
+alias gwtls='_git_worktree_custom_list'
 alias gwtmv='git worktree move'
 alias gwtrm='git worktree remove'
 
