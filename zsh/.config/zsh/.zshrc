@@ -75,5 +75,7 @@ eval "$(fzf --zsh)"  # FZF keybindings and completion
     source "/opt/homebrew/Cellar/bun/1.1.42/share/zsh/site-functions/_bun"
 
 # Crap for emscripten...
-export EMSDK_QUIET=1
-source "$HOME/.local/share/emsdk/emsdk_env.sh"
+if [ -s "$HOME/.local/share/emsdk/emsdk_env.sh" ]; then
+    export EMSDK_QUIET=1
+    source "$HOME/.local/share/emsdk/emsdk_env.sh"
+fi

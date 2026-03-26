@@ -1,5 +1,13 @@
 case "$(uname -s)" in
     Darwin)
+        if ! [ -d "/Applications/Xcode.app" ]; then
+            echo "WARN: Install Xcode, accept the license, and install Xcode CLI tools prior to running this script."
+            exit 1
+        fi
+        if ! xcode-select -p >/dev/null 2>&1; then
+            echo "WARN: Install Xcode cli tools prior to running setup script."
+            exit 1
+        fi
         #
         # WARN: Install Xcode first.
         #   Then- `sudo xcodebuild -license accept`
@@ -58,6 +66,7 @@ case "$(uname -s)" in
             linear-linear
             tableplus
             docker
+            raycast
             font-hack-nerd-font
         )
         for formula in "${formulae[@]}"; do
