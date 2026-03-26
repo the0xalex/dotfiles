@@ -18,13 +18,48 @@ return {
         local dap = require("dap")
         local dapui = require("dapui")
 
+        dap.adapters.codelldb = {
+            type = "server",
+            port = "${port}",
+            executable = {
+                command = "codelldb",
+                args = { "--port", "${port}" },
+            },
+        }
+
+        dap.configurations.zig = {
+            {
+                name = "Launch",
+                type = "codelldb",
+                request = "launch",
+                program = "${workspaceFolder}/zig-out/bin/${workspaceFolderBasename}",
+                cwd = "${workspaceFolder}",
+                stopOnEntry = false,
+                args = {},
+            },
+        }
+
         require("mason-nvim-dap").setup({
             -- Makes a best effort to use reasonable defaults
-            automatic_setup = true,
+            automatic_setup = false,
+            automatic_installation = false,
 
             -- Optional: provide additional config to the handlers,
             -- see mason-nvim-dap README for more information
-            handlers = {},
+            handlers = {
+                zig = function(config)
+                    config.adapters = {
+                        name = "Launch",
+                        type = "codelldb",
+                        request = "launch",
+                        program = "${workspaceFolder}/zig-out/bin/${workspaceFolderBasename}",
+                        cwd = "${workspaceFolder}",
+                        stopOnEntry = false,
+                        args = {},
+                    }
+                    require("mason-nvim-dap").default_setup(config)
+                end,
+            },
             ensure_installed = {
                 -- "delve", -- Go (https://github.com/go-delve/delve)
             },
@@ -35,34 +70,12 @@ return {
         vim.keymap.set("n", "<F1>", dap.step_into, { desc = "Debug: Step Into" })
         vim.keymap.set("n", "<F2>", dap.step_over, { desc = "Debug: Step Over" })
         vim.keymap.set("n", "<F3>", dap.step_out, { desc = "Debug: Step Out" })
+        vim.keymap.set("n", "<F4>", dap.restart, { desc = "Debug: Restart" })
         vim.keymap.set("n", "<leader>b", dap.toggle_breakpoint, { desc = "Debug: Toggle Breakpoint" })
-        vim.keymap.set("n", "<leader>B", function()
-            dap.set_breakpoint(vim.fn.input("Breakpoint condition: "))
-        end, { desc = "Debug: Set Breakpoint" })
 
         -- Dap UI setup
         -- see |:h nvim-dap-ui|
-        dapui.setup({
-            icons = {
-                expanded = "",
-                collapsed = "",
-                current_frame = "󰀘",
-            },
-
-            controls = {
-                icons = {
-                    pause = "⏸",
-                    play = "▶",
-                    step_into = "",
-                    step_over = "",
-                    step_out = "",
-                    step_back = "",
-                    run_last = "",
-                    terminate = "⏹",
-                    disconnect = "⏏",
-                },
-            },
-        })
+        dapui.setup()
 
         -- Toggle to see last session result.
         -- Can't see session output in case of unhandled exception without this.

@@ -15,7 +15,7 @@ font-size = 18
 font-family = "Hack Nerd Font"
 window-title-font-family = "Hack Nerd Font"
 
-theme = dark:tokyonight, light:catppuccin-latte
+theme = dark:TokyoNight,light:TokyoNight Day
 
 window-height = 90
 window-width = 180

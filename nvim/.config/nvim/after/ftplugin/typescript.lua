@@ -1,2 +1,71 @@
 vim.opt_local.shiftwidth = 2
 vim.opt_local.tabstop = 2
+
+vim.lsp.enable("ts_ls")
+
+-- local embedded_sql = vim.treesitter.query.parse(
+--     "typescript",
+--     [[
+-- (call_expression
+--     function: (identifier) @id (#eq? @id "sql")
+--     arguments: (template_string) @sql
+--     (#set! injection.language "sql")
+--     (#offset! @sql 0 1 0 -1) ; exclude backticks
+-- )
+--     ]]
+-- )
+--
+-- local get_root = function(bufnr)
+--     local parser = vim.treesitter.get_parser(bufnr, "typescript", {})
+--     local tree = parser:parse()[1]
+--     return tree:root()
+-- end
+--
+-- local format_dat_sql = function(bufnr)
+--     bufnr = bufnr or vim.api.nvim_get_current_buf()
+--
+--     -- make sure we're in typescript (will need to make other
+--     -- queries for other langs
+--     if vim.bo[bufnr].filetype == "typescript" then
+--         vim.notify("can only be used in typescript")
+--         return
+--     end
+--     local root = get_root(bufnr)
+--
+--     -- table to store local changes I make
+--     local changes = {}
+--
+--     for id, node in embedded_sql:iter_captures(root, bufnr, 0, -1) do
+--         local name = embedded_sql.captures[id]
+--         if name == "sql" then
+--             -- { start row, start col, end row, end col }
+--             local range = { node:range() }
+--             local indentation = string.rep(" ", range[2])
+--
+--             -- Run the formatter, based on the node text
+--             local formatted = run_formatter(vim.treesitter.get_node_text(node, bufnr))
+--
+--             -- Add some indentation
+--             for idx, line in ipairs(formatted) do
+--                 formatted[idx] = indentation .. line
+--             end
+--
+--             -- Memo the changes
+--             --  Insert them in reverse order
+--             --  so we don't have out-of-date line numbers
+--             table.insert(changes, 1, {
+--                 start = range[1] + 1,
+--                 final = range[3],
+--                 formatted = formatted,
+--             })
+--         end
+--     end
+-- end
+--
+-- for _, change in ipairs(changes) do
+--     vim.api.nvim_buf_set_lines(bufnr, change.start, change.final, false, change.formatted)
+-- end
+--
+-- vim.api.nvim_create_user_command("SqlMagic", function()
+--     format_dat_sql()
+-- end, {})

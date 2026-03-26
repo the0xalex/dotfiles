@@ -76,4 +76,4 @@ eval "$(fzf --zsh)"  # FZF keybindings and completion
 
 # Crap for emscripten...
 export EMSDK_QUIET=1
-source "/Users/alex/.local/share/emsdk/emsdk_env.sh"
+source "$HOME/.local/share/emsdk/emsdk_env.sh"

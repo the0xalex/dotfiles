@@ -69,6 +69,11 @@ export ANDROID_USER_HOME="${XDG_CONFIG_HOME:-HOME/.config}/android"
 which bun > /dev/null 2>&1 && \
     local BUN_BIN_DIR="/Users/alex/.cache/.bun/bin"
 
+local SS_DIR_PATH="$HOME/Library/Application Support/Steam/steamapps/common/Hollow Knight Silksong"
+[ -d "$SS_DIR_PATH" ] && \
+    export SSDIR="$SS_DIR_PATH" && \
+    export SSSAVEDIR="$HOME/Library/Application Support/unity.Team-Cherry.Silksong"
+
 # Platform specific stuff
 case "$(uname -s)" in
     Darwin)

@@ -16,7 +16,7 @@ Darwin)
     if which eza > /dev/null 2>&1; then
         alias ls="eza"
         alias l="eza -alo --git --smart-group -s type"
-        alias tree="eza -T -L 3"
+        alias tree="eza -T -L 3 -I node_modules"
     fi
     which bat > /dev/null 2>&1 && \
         alias cat="bat -pp --tabs=4 --theme \"Visual Studio Dark+\""
@@ -31,6 +31,7 @@ Darwin)
     which fast > /dev/null 2>&1 && \
         alias ifeeltheneed="fast --upload --json"
     alias work="$HOME/Developer/work/"
+    alias jippity="$HOME/Developer/jippity/packages/opencode/dist/opencode-darwin-arm64/bin/jippity"
     ;;
 
 Linux)
