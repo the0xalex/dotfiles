@@ -30,36 +30,21 @@ require("mason").setup({})
 --   - :InspectTree
 --   - :EditQuery
 
--- Install a few treesitter parsers by default
---   See available parsers at
+-- I Install a few treesitter parsers by default
+--   see other available parsers at
 --   https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
 --
 --   TODO: Remove the nvim-treesitter plugin completely
 --         and manually manage treesitter parsers
 local loaded, nvts = pcall(require, "nvim-treesitter")
 if loaded then
+    -- just pre-install the ones I know for sure I'll need.
+    --   Others will be installed by the autocommand
+    -- stylua: ignore
     nvts.install({
-        "bash",
-        "gitignore",
-        "glsl",
-        "go",
-        "gomod",
-        "gotmpl",
-        "groovy",
-        "html",
-        "java",
-        "javascript",
-        "json",
-        "objc",
-        "make",
-        "markdown",
-        "nginx",
-        "rust",
-        "sql",
-        "swift",
-        "typescript",
-        "zig",
-        "zsh",
+        "bash", "gitignore", "glsl", "go", "gomod", "gotmpl", "groovy",
+        "html", "java", "javascript", "json", "objc", "make", "markdown",
+        "nginx", "rust", "sql", "swift", "typescript", "zig", "zsh",
     })
 end
 
