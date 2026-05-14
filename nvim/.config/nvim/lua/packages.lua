@@ -1,12 +1,15 @@
 -- Since neovim 0.12, I use the builtin package manager
---   see `:h vim.pack`
+--   See `:h packages` and `:h vim.pack`
 
---   These plugins are also basically specialized package managers.
+--   These first two plugins are also basically limited package managers.
 --   One for treesitter parsers and one for LSPs.
 --
 --   I use these instead of managing them myself, because it
---     allows me to quickly open a language I don't often see or have never seen,
---     and just grab some quick defaults without thinking about it.
+--     allows me to quickly open a language I don't often see or have never
+--     seen, and just grab some quick defaults without thinking about it.
+--
+--   I have plans to remove `nvim-treesitter` as a dependency and add a
+--   `parsers/` directory at the root to lock in some parsers.
 
 vim.pack.add({
     "https://github.com/nvim-treesitter/nvim-treesitter",
@@ -27,15 +30,34 @@ require("mason").setup({})
 --   - :InspectTree
 --   - :EditQuery
 
---   TODO: Check the capabilities are good before calling this.
-require("nvim-treesitter").install({
-    "go",
-    "rust",
-    "swift",
-    "typescript",
-    "javascript",
-    "zig",
-})
+-- Install a few treesitter parsers by default
+--   See available parsers at
+--   https://github.com/nvim-treesitter/nvim-treesitter/blob/main/SUPPORTED_LANGUAGES.md
+--
+--   TODO: Remove the nvim-treesitter plugin completely
+--         and manually manage treesitter parsers
+local loaded, nvts = pcall(require, "nvim-treesitter")
+if loaded then
+    nvts.install({
+        "bash",
+        "gitignore",
+        "glsl",
+        "go",
+        "gomod",
+        "gotmpl",
+        "groovy",
+        "javascript",
+        "objc",
+        "make",
+        "markdown",
+        "nginx",
+        "rust",
+        "swift",
+        "typescript",
+        "zig",
+        "zsh",
+    })
+end
 
 -- I've put modules that are NOT related to package management
 --   in the `./plugins` directory.  The below code requires them all,

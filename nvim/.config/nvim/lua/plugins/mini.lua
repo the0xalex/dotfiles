@@ -7,7 +7,7 @@
 --   `setup` on the ones I actuallly use.
 
 vim.pack.add({
-    "https://github.com/echasnovski/mini.nvim",
+    { src = "https://github.com/nvim-mini/mini.nvim", version = "stable" },
 })
 
 require("mini.completion").setup()
