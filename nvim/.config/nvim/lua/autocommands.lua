@@ -7,6 +7,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
     end,
 })
 
+-- setup some plugin checks for conditional configuration
+-- in the LSP autocommand
+
 local is_mini_extra_loaded, mini_extra = pcall(require, "mini.extra")
 local is_tw_loaded, _ = pcall(require, "tailwind-tools")
 
@@ -63,6 +66,39 @@ vim.api.nvim_create_autocmd("LspAttach", {
                     { buffer = buffer, desc = "format tailwind classes and [w]rite" }
                 )
             end
+        end
+    end,
+})
+
+-- if `nvim-treesitter` is installed,
+--   autoinstalls treesitter parsers upon opening a filetype
+--   that has a supported parser and we haven't installed it yet.
+vim.api.nvim_create_autocmd("FileType", {
+    callback = function(ev)
+        -- grab the filetype's lang
+        local lang = vim.treesitter.language.get_lang(ev.match)
+        if not lang then
+            return
+        end
+
+        -- Short circuit -
+        --   `add` returns truthy if parser is already available on runtimepath.
+        if vim.treesitter.language.add(lang) then
+            vim.treesitter.start(ev.buf, lang)
+            return
+        end
+
+        local is_nvts_loaded, nvts = pcall(require, "nvim-treesitter")
+        if not is_nvts_loaded then
+            return
+        end
+
+        local available_langs = nvts.get_available()
+        local is_available = vim.tbl_contains(available_langs, lang)
+        if is_available then
+            nvts.install(lang):wait()
+            vim.treesitter.start(ev.buf, lang)
+            nvts.indentexpr()
         end
     end,
 })
