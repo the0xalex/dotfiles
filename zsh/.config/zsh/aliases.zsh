@@ -31,7 +31,7 @@ Darwin)
     which fast > /dev/null 2>&1 && \
         alias ifeeltheneed="fast --upload --json"
     alias work="$HOME/Developer/work/"
-    alias jippity="$HOME/Developer/jippity/packages/opencode/dist/opencode-darwin-arm64/bin/jippity"
+    alias school="$HOME/Developer/cs50/"
     ;;
 
 Linux)

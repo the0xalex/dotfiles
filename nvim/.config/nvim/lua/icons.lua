@@ -1,4 +1,6 @@
 -- Modify icons here for safety elsewhere.
+-- TODO: Considering moving to a managed icon collection instead of having
+--       this table.
 return {
     kind = {
         Array = "",

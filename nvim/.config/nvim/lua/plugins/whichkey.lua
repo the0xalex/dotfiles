@@ -1,13 +1,9 @@
-return {
-    "folke/which-key.nvim",
-    event = "VeryLazy",
-    config = function()
-        require("which-key").setup()
+-- Light interface to
+--   show what hotkey options are available from a given key
+--   show copy buffer contents
 
-        -- TODO:
-        -- Document existing key chains
-        -- require("which-key").register({
-        --     { "", group = "[S]earch" },
-        -- })
-    end,
-}
+vim.pack.add({
+    "https://github.com/folke/which-key.nvim",
+})
+
+require("which-key").setup()

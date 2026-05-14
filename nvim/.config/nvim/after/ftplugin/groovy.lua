@@ -1,3 +1,5 @@
+vim.treesitter.start()
+
 local options = {
     shiftwidth = 4,
     tabstop = 4,

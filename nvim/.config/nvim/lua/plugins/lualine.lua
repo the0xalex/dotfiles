@@ -1,3 +1,9 @@
+vim.pack.add({
+    "https://github.com/nvim-lualine/lualine.nvim",
+})
+
+local icons = require("icons")
+
 local window_width_limit = 100
 
 local conditions = {
@@ -23,8 +29,6 @@ local colors = {
     blue = "#51afef",
     red = "#ec5f67",
 }
-
-local icons = require("icons")
 
 local function diff_source()
     local gitsigns = vim.b.gitsigns_status_dict
@@ -174,39 +178,36 @@ local components = {
     },
 }
 
-return {
-    "nvim-lualine/lualine.nvim",
-    opts = {
-        options = {
-            theme = "auto",
-            globalstatus = true,
-            icons_enabled = true,
-            component_separators = { left = "", right = "" },
-            section_separators = { left = "", right = "" },
-            disabled_filetypes = { "alpha" },
-        },
-        sections = {
-            lualine_a = { components.mode },
-            lualine_b = { components.branch },
-            lualine_c = { components.diff },
-            lualine_x = {
-                components.diagnostics,
-                components.lsp,
-                components.filetype,
-            },
-            lualine_y = {},
-            lualine_z = { components.location },
-        },
-        inactive_sections = {
-            lualine_a = {},
-            lualine_b = {},
-            lualine_c = { components.filename },
-            lualine_x = { components.location },
-            lualine_y = {},
-            lualine_z = {},
-        },
-        tabline = nil,
-        extensions = nil,
-        on_config_done = nil,
+require("lualine").setup({
+    options = {
+        theme = "auto",
+        globalstatus = true,
+        icons_enabled = true,
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
+        disabled_filetypes = { "alpha" },
     },
-}
+    sections = {
+        lualine_a = { components.mode },
+        lualine_b = { components.branch },
+        lualine_c = { components.diff },
+        lualine_x = {
+            components.diagnostics,
+            components.lsp,
+            components.filetype,
+        },
+        lualine_y = {},
+        lualine_z = { components.location },
+    },
+    inactive_sections = {
+        lualine_a = {},
+        lualine_b = {},
+        lualine_c = { components.filename },
+        lualine_x = { components.location },
+        lualine_y = {},
+        lualine_z = {},
+    },
+    tabline = nil,
+    extensions = nil,
+    on_config_done = nil,
+})
