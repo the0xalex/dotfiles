@@ -56,21 +56,23 @@ else
     local map = function(key, action, desc)
         vim.keymap.set("n", key, action, { desc = desc, noremap = true, silent = true })
     end
+
     -- direction: string 'next' or 'prev'
     -- with_window: bool (show the hunk preview upon nav)
-    local function move_to_git_text_object(direction, with_window)
+    local function move_to_git_hunk(direction, with_window)
         return function()
             gitsigns.nav_hunk(direction, { wrap = true, preview = with_window, target = "all" })
         end
     end
+
     map("<leader>gl", gitsigns.blame_line, "[g]it - Show [l]ine blame")
     map("<leader>gp", gitsigns.preview_hunk, "[g]it - [p]review hunk")
     map("<leader>gs", gitsigns.stage_hunk, "[g]it - [s]tage hunk")
     map("<leader>gr", gitsigns.reset_hunk, "[g]it - [r]eset hunk")
     map("<leader>gR", gitsigns.reset_buffer, "[g]it - [R]eset entire buffer")
     map("<leader>gd", "<cmd>Gitsigns diffthis HEAD<cr>", "[g]it - [d]iff view of buffer")
-    map("]g", move_to_git_text_object("next", false), "Move cursor to next git hunk")
-    map("[g", move_to_git_text_object("prev", false), "Move cursor to previous git hunk")
-    map("]G", move_to_git_text_object("next", true), "Next git hunk, show preview")
-    map("[G", move_to_git_text_object("prev", true), "Previous git hunk, show preview")
+    map("]g", move_to_git_hunk("next", false), "Move cursor to next git hunk")
+    map("[g", move_to_git_hunk("prev", false), "Move cursor to previous git hunk")
+    map("]G", move_to_git_hunk("next", true), "Next git hunk, show preview")
+    map("[G", move_to_git_hunk("prev", true), "Previous git hunk, show preview")
 end

@@ -12,7 +12,7 @@ return {
     settings = {
         Lua = {
             runtime = {
-                version = "Lua 5.4",
+                version = "LuaJIT",
             },
             completion = {
                 enable = true,

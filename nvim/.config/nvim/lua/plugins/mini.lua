@@ -64,22 +64,24 @@ require("mini.splitjoin").setup({
 
 -- Navigate file system using column view (Miller columns) to display nested directories.
 -- `:h MiniFiles`
-local files = require("mini.files")
-files.setup()
-local files_toggle = function()
-    if not files.close() then
-        files.open()
+local is_files_loaded, files = pcall(require, "mini.files")
+if is_files_loaded then
+    files.setup()
+    local files_toggle = function()
+        if not files.close() then
+            files.open()
+        end
     end
-end
 
-local relative_files_toggle = function()
-    if not files.close() then
-        files.open(vim.api.nvim_buf_get_name(0))
+    local relative_files_toggle = function()
+        if not files.close() then
+            files.open(vim.api.nvim_buf_get_name(0))
+        end
     end
-end
 
-vim.keymap.set("n", "<leader>e", files_toggle, { desc = "[E]xplore Files" })
-vim.keymap.set("n", "<leader>E", relative_files_toggle, { desc = "[E]xplore at Relative Path" })
+    vim.keymap.set("n", "<leader>e", files_toggle, { desc = "[E]xplore Files" })
+    vim.keymap.set("n", "<leader>E", relative_files_toggle, { desc = "[E]xplore at Relative Path" })
+end
 
 require("mini.indentscope").setup({
     event = { "BufReadPre", "BufNewFile" },
@@ -101,10 +103,12 @@ require("mini.indentscope").setup({
 
 -- Fuzzy picker
 -- `:h MiniPick-overview`
--- WARN: Experimental, trying as replacement for telescope
-local pick = require("mini.pick")
-pick.setup()
-local extra = require("mini.extra")
-extra.setup() -- TODO: include some more default pickers?
-vim.keymap.set("n", "<leader>sf", pick.builtin.files, { desc = "[S]earch Files in Project" })
-vim.keymap.set("n", "<leader>sg", pick.builtin.grep_live, { desc = "[S]earch Files in Project" })
+local is_pick_loaded, pick = pcall(require, "mini.pick")
+if is_pick_loaded then
+    pick.setup()
+    vim.keymap.set("n", "<leader>sf", pick.builtin.files, { desc = "[S]earch Files in Project" })
+    vim.keymap.set("n", "<leader>sg", pick.builtin.grep_live, { desc = "[S]earch Files in Project" })
+end
+
+-- Used in LSP autocommand for keymaps related to opening LSP based picker windows
+require("mini.extra").setup()
