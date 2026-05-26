@@ -58,6 +58,7 @@ export RUSTUP_HOME="$HOME/.rustup"
 
 # Jury is still out on Go.
 export GOPATH="$DEV_DIR/go"
+export GOCACHE="${XDG_CACHE_HOME:-HOME/.cache}/go-build-cache"
 
 # Java is stupid
 export SDKMAN_DIR="${XDG_DATA_HOME:-HOME/.local/share}/sdkman"

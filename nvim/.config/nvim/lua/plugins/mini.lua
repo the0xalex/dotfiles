@@ -10,8 +10,8 @@ vim.pack.add({
     { src = "https://github.com/nvim-mini/mini.nvim", version = "stable" },
 })
 
-require("mini.completion").setup()
 require("mini.icons").setup()
+require("mini.completion").setup()
 
 -- Better Around/Inside textobjects
 --

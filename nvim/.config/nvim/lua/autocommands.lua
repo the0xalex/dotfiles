@@ -26,21 +26,29 @@ vim.api.nvim_create_autocmd("LspAttach", {
         local buffer = event.buf
         local client = assert(vim.lsp.get_client_by_id(event.data.client_id), "must have valid client")
 
+        -- This section sets up keybinds that should only work when lsp is attached.
+        -- TODO: Move these into the language server file.
+
         local map = function(keys, func, desc)
             vim.keymap.set("n", keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
         end
 
+        -- To jump back, press <c-t>.
+        map("gd", [[:lua vim.lsp.buf.definition()<cr>zz]], "[G]oto [d]efinition")
+
+        -- Rename the symbol under your cursor
+        -- Most Language Servers support renaming across files, etc.
+        map("<leader>lr", vim.lsp.buf.rename, "[L]SP [R]ename")
+
+        -- Show code actions available from the lsp
+        map("<leader>la", vim.lsp.buf.code_action, "[L]SP Code [A]ction")
+
+        -- show a picker window for lsp locations
         if is_mini_extra_loaded then
-            -- To jump back, press <c-t>.
-            map("gd", lsp_picker("declaration"), "[G]oto [d]eclaration")
-            map("gD", lsp_picker("definition"), "[G]oto [D]efinition")
+            map("gD", lsp_picker("declaration"), "[G]oto [D]eclaration")
             map("gr", lsp_picker("references"), "[G]oto [r]eferences")
             map("gT", lsp_picker("type_definition"), "[G]oto [T]ype Definition")
         end
-        -- Rename the variable under your cursor
-        -- Most Language Servers support renaming across files, etc.
-        map("<leader>lr", vim.lsp.buf.rename, "[L]SP [R]ename")
-        map("<leader>la", vim.lsp.buf.code_action, "[L]SP Code [A]ction")
 
         if client and client.server_capabilities.documentHighlightProvider then
             -- Highlight references of the word under cursor when cursor rests

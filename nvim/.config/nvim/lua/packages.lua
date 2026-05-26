@@ -65,6 +65,7 @@ local plugins = {
     "plugins.terminal",         -- Togglable floating terminal window
     "plugins.whichkey",         -- Show pending keybinds
     "plugins.bufferline",       -- Show buffers in the tab line at top.
+    "plugins.debug",
 }
 
 local failures = {}

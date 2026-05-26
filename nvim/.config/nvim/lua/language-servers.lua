@@ -13,7 +13,7 @@ vim.lsp.enable({
     "bashls",
     "gopls",
     "lua_ls",
-    "ts_ls",
+    "tsgo",
     "clangd",
 })
 
