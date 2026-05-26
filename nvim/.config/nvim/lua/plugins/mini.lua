@@ -79,7 +79,7 @@ if is_files_loaded then
         end
     end
 
-    vim.keymap.set("n", "<leader>e", files_toggle, { desc = "[E]xplore Files" })
+    vim.keymap.set("n", "<leader>e", files_toggle, { desc = "[e]xplore Files" })
     vim.keymap.set("n", "<leader>E", relative_files_toggle, { desc = "[E]xplore at Relative Path" })
 end
 
@@ -107,7 +107,8 @@ local is_pick_loaded, pick = pcall(require, "mini.pick")
 if is_pick_loaded then
     pick.setup()
     vim.keymap.set("n", "<leader>sf", pick.builtin.files, { desc = "[S]earch Files in Project" })
-    vim.keymap.set("n", "<leader>sg", pick.builtin.grep_live, { desc = "[S]earch Files in Project" })
+    -- uses rg if avail.
+    vim.keymap.set("n", "<leader>sg", pick.builtin.grep_live, { desc = "Open a [g]rep picker in Project" })
 end
 
 -- Used in LSP autocommand for keymaps related to opening LSP based picker windows
