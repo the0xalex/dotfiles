@@ -1,0 +1,5 @@
+# .zshellcheckrc
+
+disabled_katas:
+  - ZC1021  # style recommendation chmod permissions
+  - ZC1473  # openssl -nodes writes keys to disk in cleartext
