@@ -52,6 +52,7 @@ vim.keymap.set("n", "<leader>W", "<cmd>noautocmd w<cr>", { desc = "Write without
 -- quick buffer actions
 vim.keymap.set("n", "<leader>w", "<cmd>w!<cr>", { desc = "Write current buffer" })
 vim.keymap.set("n", "<leader>bd", ":bd<cr>", { desc = "Close current buffer" })
+vim.keymap.set("n", "<leader>bp", ":!print -n % | pbcopy<cr>", { desc = "Close current buffer" })
 vim.keymap.set("n", "<leader>f", vim.lsp.buf.format, { desc = "lsp format buffer" })
 
 -- paste from the 0 buffer

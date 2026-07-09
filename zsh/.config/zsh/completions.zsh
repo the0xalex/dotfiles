@@ -1,6 +1,13 @@
 # Add completion paths
+
+typeset -U fpath FPATH
+fpath=(
+    "${XDG_DATA_HOME:-$HOME/.local/share}/zsh/site-functions" # zshellcheck
+    $fpath
+)
+
 which brew > /dev/null 2>&1 && \
-    FPATH="$(brew --prefix)/share/zsh/site-functions:${FPATH}"
+    fpath+=("$(brew --prefix)/share/zsh/site-functions")
 
 autoload bashcompinit && bashcompinit
 autoload -Uz compinit && compinit -C -D
@@ -18,4 +25,4 @@ done
 compinit -d "${XDG_CACHE_HOME:-$HOME/.cache}/zcompdump"
 
 # init the aws completer
-complete -C aws_completer aws
+compdef aws_completer aws

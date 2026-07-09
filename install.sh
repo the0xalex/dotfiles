@@ -55,7 +55,7 @@ case "$(uname -s)" in
             lazygit
             gnu-sed
             powerlevel10k
-            'postgresql@17'
+            'postgresql@18'
             zsh-autosuggestions
             zsh-syntax-highlighting
             zsh-history-substring-search
@@ -96,6 +96,13 @@ case "$(uname -s)" in
             SDKMAN_DIR="${XDG_DATA_HOME:-HOME/.local/share}/sdkman" \
                 curl -s "https://get.sdkman.io?rcupdate=false" | bash
         fi
+
+        # Install zshellcheck
+        # https://github.com/afadesigns/zshellcheck
+        if ! command -v "zshellcheck" >/dev/null 2>&1; then
+            print -r -- "Installing zshellcheck..."
+            curl -fsSL https://raw.githubusercontent.com/afadesigns/zshellcheck/main/install.sh | bash
+        fi
 	
         # Apply configuration files
         stow git
@@ -104,6 +111,7 @@ case "$(uname -s)" in
         stow ghostty
         stow zsh
         stow bun
+        stow zshellcheck
         if [ -d $HOME/Library/Developer/Xcode/UserData/ ]; then
            mkdir -p "$HOME/Library/Developer/Xcode/UserData/FontAndColorThemes"
            mkdir -p "$HOME/Library/Developer/Xcode/UserData/KeyBindings"

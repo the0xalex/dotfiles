@@ -79,6 +79,7 @@ local SS_DIR_PATH="$HOME/Library/Application Support/Steam/steamapps/common/Holl
 case "$(uname -s)" in
     Darwin)
         export HOMEBREW_NO_ANALYTICS=1
+        export HOMEBREW_REQUIRE_TAP_TRUST=1
         # path variable
         typeset -U path PATH
         path=(

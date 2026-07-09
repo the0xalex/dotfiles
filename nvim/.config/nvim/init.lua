@@ -9,6 +9,8 @@ vim.cmd([[let &t_Ce = "\e[4:0m"]])
 
 -- Enable filetype detection `:h filetype-plugin-on`
 vim.cmd.filetype("plugin indent on")
+-- set filetype for nginx docker templates
+vim.filetype.add({ pattern = { [".*conf.template"] = "nginx" } })
 
 require("options")
 require("keymaps")

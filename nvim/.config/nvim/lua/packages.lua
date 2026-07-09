@@ -66,6 +66,7 @@ local plugins = {
     "plugins.whichkey",         -- Show pending keybinds
     "plugins.bufferline",       -- Show buffers in the tab line at top.
     "plugins.debug",
+    "plugins.tts",
 }
 
 local failures = {}
