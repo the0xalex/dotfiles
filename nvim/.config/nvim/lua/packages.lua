@@ -64,9 +64,9 @@ local plugins = {
     "plugins.gitsigns",         -- Git Status/Hunk Indicators
     "plugins.terminal",         -- Togglable floating terminal window
     "plugins.whichkey",         -- Show pending keybinds
-    "plugins.bufferline",       -- Show buffers in the tab line at top.
+    "plugins.bufferline",       -- Show buffers in the tab line at top
     "plugins.debug",
-    "plugins.tts",
+    "plugins.tts",              -- my tabletop simulator editor plugin
 }
 
 local failures = {}

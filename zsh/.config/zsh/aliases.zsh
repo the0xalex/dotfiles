@@ -32,6 +32,7 @@ Darwin)
         alias zcheck="zshellcheck -no-banner"
     alias work="$HOME/Developer/work/"
     alias school="$HOME/Developer/cs50/"
+    alias tts="cd $XDG_CACHE_HOME/nvim/tts-editor && nvim -c \"TTSOpen\""
     ;;
 
 Linux)
