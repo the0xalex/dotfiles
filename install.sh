@@ -16,6 +16,15 @@ case "$(uname -s)" in
         defaults write -g InitialKeyRepeat -int 12
         defaults write -g KeyRepeat -int 1
         defaults write com.apple.finder AppleShowAllFiles -boolean true;
+
+        # Floating sidebar shit for macOS 26
+        defaults write -g NSSplitViewItemSidebarDefaultsToFloatingAppearance -bool false
+        defaults write -g NSSplitViewItemGlassMinimumCornerRadius -float 8
+        defaults write -g NSConvolutionOverride1 -float 12
+        # reset: 
+        #   defaults write -g NSSplitViewItemSidebarDefaultsToFloatingAppearance -bool true
+        #   defaults delete -g NSConvolutionOverride1
+        #   defaults delete -g NSSplitViewItemGlassMinimumCornerRadius
         
         # Homebrew 
         # https://brew.sh

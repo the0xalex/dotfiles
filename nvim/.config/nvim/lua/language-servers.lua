@@ -13,8 +13,10 @@ vim.lsp.enable({
     "bashls",
     "gopls",
     "lua_ls",
-    "tsgo",
+    "tsc",
+    "tailwindcss",
     "clangd",
+    "lemminx",
 })
 
 -- TODO: trigger lsp loading based on treesitter grammar for multi-language files.

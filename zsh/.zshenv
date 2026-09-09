@@ -21,3 +21,6 @@ export ZDOTDIR="${XDG_CONFIG_HOME:-HOME/.config}/zsh"
 # Cargo says to put this in the env file.  Not sure why.
 [ -f "${XDG_DATA_HOME:-$HOME}/.cargo/env" ] &&
     source "${XDG_DATA_HOME:-$HOME}/.cargo/env"
+
+# Unity CLI
+. "/Users/alex/.unity/env"

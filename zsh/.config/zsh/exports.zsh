@@ -75,6 +75,11 @@ local SS_DIR_PATH="$HOME/Library/Application Support/Steam/steamapps/common/Holl
     export SSDIR="$SS_DIR_PATH" && \
     export SSSAVEDIR="$HOME/Library/Application Support/unity.Team-Cherry.Silksong"
 
+export TTS_CACHE_DIR="${XDG_CACHE_HOME:-HOME/.cache}/nvim/tts-editor-cache"
+if [ ! -d $TTS_CACHE_DIR ]; then
+    mkdir -p $TTS_CACHE_DIR
+fi
+
 # Platform specific stuff
 case "$(uname -s)" in
     Darwin)
